@@ -242,9 +242,18 @@ public class Lista extends AppCompatActivity {
     }
 
     public void usuario(MenuItem item) {
+
         String username = getFromSharedPreferences("username");
 
-        Toast.makeText(this, "usuario: "+username, Toast.LENGTH_SHORT).show();
+
+
+        Intent inte = new Intent(Lista.this, Perfil.class);
+        inte.putExtra("usuario", username);
+        startActivity(inte);
+
+
+
+//        Toast.makeText(this, "usuario: "+username, Toast.LENGTH_SHORT).show();
     }
 
     public void lista_finalizados(MenuItem item) {
