@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Consulta"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+
+    <item
+        android:icon="@mipmap/ic_launcher_round"
+        android:onClick="usuario"
+        android:title="Usuario" />
+
+    <!--<item-->
+        <!--android:icon="@mipmap/list"-->
+        <!--android:onClick="lista_finalizados"-->
+        <!--android:title="Lista de Finalizados" />-->
+
+    <item
+        android:checkable="false"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:onClick="lista"
+        android:title="Deslogar" />
+
+    <item android:title="Lista de usuarios"
+        android:onClick="lista_finalizados"/>
+
+
+</menu>

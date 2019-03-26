@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.pratica">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/lista"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/agenda"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Add_item_lista"></activity>
+        <activity
+            android:name=".Lista_de_itens"
+            android:label="@string/title_activity_lista_de_itens"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".item_riscado" />
+        <activity android:name=".Lista_tabela_fechada" />
+        <activity android:name=".item" />
+        <activity android:name=".Lista_cadatro" />
+        <activity android:name=".Login" />
+        <activity android:name=".Cadastro" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Lista">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

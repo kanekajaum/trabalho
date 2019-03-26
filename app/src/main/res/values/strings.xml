@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Minhas Listas</string>
+    <string name="title_activity_lista">Lista</string>
+    <string name="pref_key">logado</string>
+    <string name="title_activity_lista_de_itens">Lista_de_itens</string>
+</resources>
