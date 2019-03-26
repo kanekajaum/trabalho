@@ -97,4 +97,29 @@ public class Lista_de_itens extends AppCompatActivity {
         item_passado.putExtra("item", item);
         startActivity(item_passado);
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        String usuario = getFromSharedPreferences("username");
+//
+//        //Pega a intent de outra activity
+//        Intent it = getIntent();
+//
+//        //Recuperei a string da outra activity
+//        String item = it.getStringExtra("item");
+//
+//
+//        listaViewItens = findViewById(R.id.list_itens);
+//
+//        daoitenslista = new ItensDAO(this);
+//
+//        //       itens = daoitenslista.ObterTodosItensDaLista("usuario","Item");
+//        itens = daoitenslista.getAllItens(item ,usuario);
+//
+//
+//        itensFiltrados.addAll(itens);
+//        ArrayAdapter<Itens> adapter = new ArrayAdapter<Itens>(this, android.R.layout.simple_list_item_1, itensFiltrados);
+//        listaViewItens.setAdapter(adapter);
+//    }
 }
