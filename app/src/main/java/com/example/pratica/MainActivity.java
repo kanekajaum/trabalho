@@ -48,14 +48,20 @@ public class MainActivity extends AppCompatActivity {
         p.setNome(nome.getText().toString());
         p.setEmail_usuario_lista(usuario);
 
-        dao.inserir(p);
+        if (nome.getText().toString() == " " || nome.getText().toString() == ""){
+            Toast.makeText(this, "Por favor Preencha os campos corretamente", Toast.LENGTH_SHORT).show();
+        }else{
+            dao.inserir(p);
 
-        Toast.makeText(MainActivity.this, "usuario: "+usuario+ " || "+nome.getText().toString()+" inserido com sucesso!!!",Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "usuario: "+usuario+ " || "+nome.getText().toString()+" inserido com sucesso!!!",Toast.LENGTH_LONG).show();
 
-        Intent it = new Intent(MainActivity.this, Lista.class);
-        startActivity(it);
+            Intent it = new Intent(MainActivity.this, Lista.class);
+            startActivity(it);
 
-        finish();
+            finish();
+        }
+
+
 
     }
 

@@ -62,7 +62,9 @@ public class ProdutoDAO {
         return produtos;
 
     }
-    public void excluir(Produto p) {
+    public void excluir(Produto p, String usuario) {
         banco.delete("lista", "id = ?", new String[]{p.getId().toString()});
+        banco.delete("itens", "email_usuario = ?", new String[]{usuario});
+
     }
 }

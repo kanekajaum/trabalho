@@ -43,12 +43,27 @@ public class Cadastro extends AppCompatActivity {
             u.setEmail(email.getText().toString());
             u.setSenha(senha.getText().toString());
 
-        dao.inserir(u);
 
-            Toast.makeText(this,"Usuario "+nome.getText().toString()+" cadastrado.", Toast.LENGTH_SHORT).show();
+             String auth =   dao.metodo(email.getText().toString(), senha.getText().toString());
 
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
+             if(email.getText().toString() != auth){
+
+//                 dao.inserir(u);
+
+                 Toast.makeText(this, "Usuario " + nome.getText().toString() + " cadastrado.", Toast.LENGTH_SHORT).show();
+
+                 Intent intent = new Intent(this, Login.class);
+                 startActivity(intent);
+             }else{
+
+                 Toast.makeText(this, "Usuario já existente", Toast.LENGTH_SHORT).show();
+
+                 Intent intent = new Intent(this, Cadastro.class);
+                 startActivity(intent);
+
+
+             }
+
 
     }
 }

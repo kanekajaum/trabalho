@@ -72,5 +72,8 @@ public class UsuarioDAO {
     }
 
 
+    public void excluir(Usuario produtoExcluir) {
+        banco.delete("usuarios", "id = ?", new String[]{produtoExcluir.getId().toString()});
 
+    }
 }

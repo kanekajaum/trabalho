@@ -29,6 +29,7 @@ public class Lista extends AppCompatActivity {
     private ListView listaView;
     private ProdutoDAO dao;
     private List<Produto> produtos;
+    private GridView gv;
 
     private List<Produto> produtosFiltrados = new ArrayList<>();
 
@@ -55,7 +56,7 @@ public class Lista extends AppCompatActivity {
 //===============================================================
 
 
-        GridView gv = (GridView) findViewById(R.id.listaGrid);
+        gv = (GridView) findViewById(R.id.listaGrid);
         String username =  getFromSharedPreferences("username");
 
         dao = new ProdutoDAO(this);
@@ -140,10 +141,11 @@ public class Lista extends AppCompatActivity {
                 produtosFiltrados.add(p);
             }
         }
-        listaView.invalidateViews();
+        gv.invalidateViews();
     }
 
     public  void excluir(MenuItem item){
+        final String username =  getFromSharedPreferences("username");
         AdapterView.AdapterContextMenuInfo menuInfo =
                 (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
@@ -158,8 +160,8 @@ public class Lista extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         produtosFiltrados.remove(produtoExcluir);
                         produtos.remove(produtoExcluir);
-                        dao.excluir(produtoExcluir);
-                        listaView.invalidateViews();
+                        dao.excluir(produtoExcluir, username);
+                        gv.invalidateViews();
                     }
                 }).create();
         dialog.show();

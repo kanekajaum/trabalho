@@ -1,7 +1,9 @@
 package com.example.pratica;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,7 +11,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -79,10 +85,80 @@ public class Lista_de_itens extends AppCompatActivity {
 
 //        Toast.makeText(this, "usuario: "+usuario+" lista: "+item, Toast.LENGTH_LONG).show();
 //
+
+        //===================================================================
+        listaViewItens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(getBaseContext(),"Você Clicou em: " +itensFiltrados
+                        .get(position).getNome_item(), Toast.LENGTH_SHORT).show();
+
+
+//                Intent it = new Intent(Lista_de_itens.this, Lista_de_itens.class);
+//                it.putExtra("item", itensFiltrados.get(position).getNome_tabela());
+//                startActivity(it);
+
+            }
+        });
+
+        registerForContextMenu(listaViewItens);
+
+
     }
     private String getFromSharedPreferences(String key) {
         SharedPreferences sharedPref = getSharedPreferences("login" , Context.MODE_PRIVATE);
         return sharedPref.getString(key, "stive");
+
+    }
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater i = getMenuInflater();
+        i.inflate(R.menu.menu_contexto_itens, menu);
+    }
+
+    public  void procura(String nome){
+        itensFiltrados.clear();
+        for (Itens p : itens){
+            if (p.getNome_item().toLowerCase().contains(nome.toLowerCase())){
+                itensFiltrados.add(p);
+            }
+        }
+        listaViewItens.invalidateViews();
+    }
+
+    public  void excluir(MenuItem item){
+        AdapterView.AdapterContextMenuInfo menuInfo =
+                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        final Itens produtoExcluir = itensFiltrados.get(menuInfo.position);
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Atenção")
+                .setMessage("Realmente deseja excluir?")
+                .setNegativeButton("Não", null)
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        itensFiltrados.remove(produtoExcluir);
+                        itens.remove(produtoExcluir);
+                        daoitenslista.excluir(produtoExcluir);
+                        listaViewItens.invalidateViews();
+                    }
+                }).create();
+        dialog.show();
+    }
+
+    public void baixa(MenuItem item){
+        AdapterView.AdapterContextMenuInfo menuInfo =
+                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        try {
+            Toast.makeText(this, "funcionalidade ainda não disponivel", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
