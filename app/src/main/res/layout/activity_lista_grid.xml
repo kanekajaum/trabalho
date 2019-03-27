@@ -2,24 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Lista"
-    tools:showIn="@layout/activity_lista">
+    tools:context=".listaGrid">
 
     <GridView
         android:id="@+id/listaGrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="100dp"
+        android:layout_marginBottom="8dp"
+        android:columnWidth="150dp"
         android:horizontalSpacing="10dp"
-        android:numColumns="2"
-        android:verticalSpacing="20dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        android:gravity="center"/>
-
+        tools:layout_editor_absoluteX="8dp" />
 </LinearLayout>

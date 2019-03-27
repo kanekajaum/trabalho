@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -52,20 +53,21 @@ public class Lista extends AppCompatActivity {
         });
 
 //===============================================================
-        String username = getFromSharedPreferences("username");
 
-            listaView = findViewById(R.id.lista_produtos);
 
-            dao = new ProdutoDAO(this);
+        GridView gv = (GridView) findViewById(R.id.listaGrid);
+        String username =  getFromSharedPreferences("username");
+
+        dao = new ProdutoDAO(this);
 
 //            produtos = dao.ObterTodos();
-            produtos = dao.getAllItens(username);
+        produtos = dao.getAllItens(username);
 
-            produtosFiltrados.addAll(produtos);
-//            ArrayAdapter<Produto> adapter = new ArrayAdapter<Produto>(this, android.R.layout.simple_list_item_1, produtosFiltrados);
-////
-            ItemAdapter adapter = new ItemAdapter(this, produtosFiltrados);
-            listaView.setAdapter(adapter);
+        produtosFiltrados.addAll(produtos);
+//        ArrayAdapter<Produto> adapter = new ArrayAdapter<Produto>(this, android.R.layout.simple_list_item_1, produtosFiltrados);
+//
+        ItemAdapter adapter = new ItemAdapter(this, produtosFiltrados);
+        gv.setAdapter(adapter);
 
 
 
@@ -79,7 +81,7 @@ public class Lista extends AppCompatActivity {
 
 //===============================================================
 
-        listaView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -93,7 +95,7 @@ public class Lista extends AppCompatActivity {
             }
         });
 
-        registerForContextMenu(listaView);
+        registerForContextMenu(gv);
 
     }
 
@@ -181,7 +183,7 @@ public class Lista extends AppCompatActivity {
         super.onResume();
         String username = getFromSharedPreferences("username");
 
-        listaView = findViewById(R.id.lista_produtos);
+        GridView gv = findViewById(R.id.listaGrid);
 
         dao = new ProdutoDAO(this);
 //
@@ -190,7 +192,7 @@ public class Lista extends AppCompatActivity {
 
         produtosFiltrados.clear();
         produtosFiltrados.addAll(produtos);
-        listaView.invalidateViews();
+        gv.invalidateViews();
 
 
 
@@ -258,6 +260,11 @@ public class Lista extends AppCompatActivity {
 
     public void lista_finalizados(MenuItem item) {
         Intent it = new Intent(Lista.this, Lista_cadatro.class);
+        startActivity(it);
+    }
+
+    public void gridView(MenuItem item) {
+        Intent it = new Intent(Lista.this, listaGrid.class);
         startActivity(it);
     }
 }

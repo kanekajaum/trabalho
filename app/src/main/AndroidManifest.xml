@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/agenda"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Perfil"></activity>
+        <activity android:name=".listaGrid"></activity>
+        <activity android:name=".GridView" />
+        <activity android:name=".Perfil" />
         <activity android:name=".Add_item_lista" />
         <activity
             android:name=".Lista_de_itens"

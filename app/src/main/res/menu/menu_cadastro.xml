@@ -28,6 +28,10 @@
 
     <item android:title="Lista de usuarios"
         android:onClick="lista_finalizados"/>
+    <item
+        android:id="@+id/gridView_list"
+        android:onClick="gridView"
+        android:title="lista de grade" />
 
 
 </menu>
