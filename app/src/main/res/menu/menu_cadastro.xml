@@ -21,5 +21,8 @@
     <item android:title="Lista de itens finalizados"
         android:onClick="lista_final"/>
 
+    <item android:title="Novo Layout "
+        android:onClick="main"/>
+
 
 </menu>

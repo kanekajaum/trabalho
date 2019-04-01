@@ -1,5 +1,6 @@
 package com.example.pratica;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,60 +8,78 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.Snackbar;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lista extends AppCompatActivity {
+public class ListaP extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    private UsuarioDAO UsuarioDAO;
     private ProdutoDAO dao;
     private List<Produto> produtos;
     private GridView gv;
+    TextView perfilNome = null;
+    TextView perfilEmail = null;
 
     private List<Produto> produtosFiltrados = new ArrayList<>();
 
     private ListView listaView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista);
+        setContentView(R.layout.activity_lista_p);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                Intent it = new Intent(Lista.this, MainActivity.class);
+                Intent it = new Intent(ListaP.this, MainActivity.class);
                 startActivity(it);
             }
         });
 
-//===============================================================
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
 
 
         gv = (GridView) findViewById(R.id.listaGrid);
         String username =  getFromSharedPreferences("username");
 
         dao = new ProdutoDAO(this);
+
+
+
 
 //            produtos = dao.ObterTodos();
         produtos = dao.getAllItens(username);
@@ -70,25 +89,11 @@ public class Lista extends AppCompatActivity {
 //
         ItemAdapter adapter = new ItemAdapter(this, produtosFiltrados);
         gv.setAdapter(adapter);
-        //===============================================================
+    //------------------------------------------------------------------------------
+//        perfilNome  = (TextView) findViewById(R.id.navNome);
+//        perfilNome.setText(username);
 
-
-
-
-
-
-        if (username == "stive" || username == "" ){
-            Intent intent = new Intent(this, Login.class);
-            startActivity(intent);
-        }
-        else{
-            Intent intent = new Intent(this, ListaP.class);
-            startActivity(intent);
-        }
-
-
-//===============================================================
-
+        //-----------------------------------------------------------------------------
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -96,7 +101,7 @@ public class Lista extends AppCompatActivity {
 //                Toast.makeText(getBaseContext(),"Você Clicou em: " +produtosFiltrados.get(position).getNome(), Toast.LENGTH_SHORT).show();
 
 
-                Intent it = new Intent(Lista.this, Lista_de_itens.class);
+                Intent it = new Intent(ListaP.this, Lista_de_itens.class);
                 it.putExtra("item", produtosFiltrados.get(position).getNome());
                 startActivity(it);
 
@@ -105,26 +110,27 @@ public class Lista extends AppCompatActivity {
 
         registerForContextMenu(gv);
 
+        TextView nome = (TextView) findViewById(R.id.navNome);
+
+        if(username != "stive"){
+            nome = (TextView) findViewById(R.id.navNome);
+            Toast.makeText(this, "Bem bindo "+username, Toast.LENGTH_SHORT).show();
+        }else{
+            nome.setText("Você precisa se logar");
+
+        }
 
 
     }
-
-    //===============================================================
-
     private String getFromSharedPreferences(String key) {
-        SharedPreferences sharedPref = getSharedPreferences("login" ,Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("login" , Context.MODE_PRIVATE);
         return sharedPref.getString(key, "stive");
 
     }
-
-
-    //===============================================================
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater i  = getMenuInflater();
-        i.inflate(R.menu.menu_cadastro, menu);
+        i.inflate(R.menu.lista, menu);
 
         SearchView sv = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
 
@@ -207,146 +213,72 @@ public class Lista extends AppCompatActivity {
 
     }
 
-
-    //===============================================================
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        String username = getFromSharedPreferences("username");
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-        GridView gv = findViewById(R.id.listaGrid);
-
-        dao = new ProdutoDAO(this);
-//
-//            produtos = dao.ObterTodos();
-        produtos = dao.getAllItens(username);
-
-        produtosFiltrados.clear();
-        produtosFiltrados.addAll(produtos);
-        gv.invalidateViews();
-
-
-
-
-    }
-
-    //===============================================================
-
-
-    public void lista(MenuItem item) {
-
-
-
-        Intent it = new Intent(Lista.this, Login.class);
-        startActivity(it);
-
-        SharedPreferences settings = getSharedPreferences("username", Context.MODE_PRIVATE);
-        settings.edit().clear().commit();
-
-
-    }
-
-    //===============================================================
-
-
-    public void cadastrar(MenuItem item) {
-        Intent it = new Intent(Lista.this, Cadastro.class);
-        startActivity(it);
-    }
-
-    //===============================================================
-
-
-    public void logar(MenuItem item) {
-        Intent it = new Intent(Lista.this, Login.class);
-        startActivity(it);
-    }
-
-    //===============================================================
-
-
-    public void lista_cadastrados(MenuItem item) {
-        Intent it = new Intent(Lista.this, Lista_cadatro.class);
-        startActivity(it);
-    }
-
-
-    //===============================================================
-
-
-    public void pref(MenuItem item) {
-        try {
-
-
-
-        }catch (Exception e){
-            Toast.makeText(this, "Erro:"+e, Toast.LENGTH_SHORT).show();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
 
+        return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater i  = getMenuInflater();
+//        i.inflate(R.menu.lista, menu);
+//
+//
+//        return true;
+//    }
 
-    //===============================================================
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.navPerfil) {
+            String username = getFromSharedPreferences("username");
 
 
-    public void add(MenuItem item) {
-        Intent it = new Intent(Lista.this, MainActivity.class);
-        startActivity(it);
+
+            Intent inte = new Intent(this, Perfil.class);
+            inte.putExtra("usuario", username);
+            startActivity(inte);
+        } else if (id == R.id.nav_listaUsuarios) {
+            Intent it = new Intent(this, Lista_cadatro.class);
+            startActivity(it);
+        } else if (id == R.id.nav_finalizados) {
+            Intent its = new Intent(this, Lista_itens_finalizados.class);
+            startActivity(its);
+        } else if (id == R.id.nav_exit) {
+            Intent it = new Intent(this, Login.class);
+            startActivity(it);
+
+            SharedPreferences settings = getSharedPreferences("username", Context.MODE_PRIVATE);
+            settings.edit().clear().commit();
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
-
-    //===============================================================
-
-
-    public void usuario(MenuItem item) {
-
-        String username = getFromSharedPreferences("username");
-
-
-
-        Intent inte = new Intent(Lista.this, Perfil.class);
-        inte.putExtra("usuario", username);
-        startActivity(inte);
-
-
-
-
-
-//        Toast.makeText(this, "usuario: "+username, Toast.LENGTH_SHORT).show();
-    }
-
-    //===============================================================
-
-
-    public void lista_finalizados(MenuItem item) {
-        Intent it = new Intent(Lista.this, Lista_cadatro.class);
-        startActivity(it);
-    }
-
-    public void main(MenuItem item) {
-        Intent it = new Intent(Lista.this, ListaP.class);
-        startActivity(it);
-    }
-
-    public void lista_final(MenuItem item) {
-        Intent its = new Intent(Lista.this, Lista_itens_finalizados.class);
-        startActivity(its);
-    }
-
-
-
-
-    //===============================================================
-
-
-    public void gridView(MenuItem item) {
-        Intent it = new Intent(Lista.this, listaGrid.class);
-        startActivity(it);
-    }
-
-
-
-    //===============================================================
-
 }

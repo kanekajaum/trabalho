@@ -84,6 +84,8 @@ public class Lista_de_itens extends AppCompatActivity {
 
         itensFiltrados.addAll(itens);
         ArrayAdapter<Itens> adapter = new ArrayAdapter<Itens>(this, android.R.layout.simple_list_item_1, itensFiltrados);
+
+//        item_da_lista ada = new item_da_lista(this, itensFiltrados);
         listaViewItens.setAdapter(adapter);
 
 //        Toast.makeText(this, "usuario: "+usuario+" lista: "+item, Toast.LENGTH_LONG).show();

@@ -12,12 +12,12 @@ import java.util.List;
 
 public class item_da_lista extends BaseAdapter {
 
-    private List<Produto> produto;
+    private List<Itens> itens;
     private Activity activity;
 
-    public item_da_lista(Activity activity, List<Produto> produto) {
+    public item_da_lista(Activity activity, List<Itens> itens) {
         this.activity = activity;
-        this.produto = produto;
+        this.itens = itens;
     }
 
     @Override
@@ -40,9 +40,9 @@ public class item_da_lista extends BaseAdapter {
         View v = activity.getLayoutInflater().inflate(R.layout.activity_item_da_lista, parent, false);
         TextView nome = v.findViewById(R.id.id_nome_item);
 
-        Produto p = produto.get(position);
+        Itens p = itens.get(position);
 
-        nome.setText(p.getNome());
+        nome.setText(p.getNome_item());
 
         return v;
     }
