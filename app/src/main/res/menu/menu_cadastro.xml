@@ -15,19 +15,9 @@
         android:onClick="usuario"
         android:title="Usuario" />
 
-    <!--<item-->
-        <!--android:icon="@mipmap/list"-->
-        <!--android:onClick="lista_finalizados"-->
-        <!--android:title="Lista de Finalizados" />-->
-
-    <item
-        android:checkable="false"
-        android:icon="@android:drawable/ic_lock_power_off"
-        android:onClick="lista"
-        android:title="Deslogar" />
-
     <item android:title="Lista de usuarios"
         android:onClick="lista_finalizados"/>
+
     <item android:title="Lista de itens finalizados"
         android:onClick="lista_final"/>
 

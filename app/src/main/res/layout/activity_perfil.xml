@@ -18,17 +18,42 @@
         tools:srcCompat="@mipmap/avatar" />
 
     <TextView
-        android:id="@+id/textPerfilEmail"
+        android:id="@+id/textPerfilNome"
         android:layout_width="match_parent"
         android:layout_height="37dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="joaosantos.rodrigues9@gmail.com"
-        android:textAlignment="center"
+        android:text="Nome: João Vitor "
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="284dp" />
+
+    <TextView
+        android:id="@+id/textPerfilEmail"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Email: joaosantos.rodrigues9@gmail.com"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="284dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="128dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_dark"
+        android:text=" Sair (X)"
+        android:textColor="@android:color/background_light"
+        android:onClick="deslogar"/>
 
 </LinearLayout>

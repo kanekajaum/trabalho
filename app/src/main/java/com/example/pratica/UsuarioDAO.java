@@ -71,6 +71,23 @@ public class UsuarioDAO {
 
     }
 
+    String usuarioNome(String parametro){
+
+
+        Cursor cursor = banco.rawQuery("SELECT * FROM usuarios WHERE email LIKE '"+ parametro+"'", null);
+
+        cursor.moveToFirst();
+
+        String nomeString = cursor.getString(cursor.getColumnIndex("nome"));
+
+        StringBuilder conversor = new StringBuilder();
+        conversor.append(nomeString);
+
+
+        return conversor.toString();
+
+    }
+
 
     public void excluir(Usuario produtoExcluir) {
         banco.delete("usuarios", "id = ?", new String[]{produtoExcluir.getId().toString()});
