@@ -46,6 +46,15 @@ public class ItensDAO {
         return itens;
     }
 
+    public int contagem() {
+        String SelectQuery = "select COUNT(*) FROM itens";
+        Cursor cursor = banco.rawQuery(SelectQuery, null);
+        cursor.moveToFirst();
+        int cont = cursor.getInt(0);
+        return cont;
+    }
+
+
     public void excluir(Itens produtoExcluir) {
         banco.delete("itens", "id_itens = ?", new String[]{produtoExcluir.getId_itens().toString()});
     }

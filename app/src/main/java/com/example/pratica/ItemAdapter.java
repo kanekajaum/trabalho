@@ -17,6 +17,10 @@ public class ItemAdapter extends BaseAdapter {
         this.activity = activity;
         this.produto = produto;
     }
+
+    public ItemAdapter(Lista_de_itens activity, List<Itens> strings) {
+    }
+
     @Override
     public int getCount() {
         return produto.size();

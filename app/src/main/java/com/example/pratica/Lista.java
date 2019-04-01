@@ -26,13 +26,14 @@ import java.util.List;
 
 public class Lista extends AppCompatActivity {
 
-    private ListView listaView;
+
     private ProdutoDAO dao;
     private List<Produto> produtos;
     private GridView gv;
 
     private List<Produto> produtosFiltrados = new ArrayList<>();
 
+    private ListView listaView;
 
 
 
@@ -69,6 +70,8 @@ public class Lista extends AppCompatActivity {
 //
         ItemAdapter adapter = new ItemAdapter(this, produtosFiltrados);
         gv.setAdapter(adapter);
+        //===============================================================
+
 
 
 
@@ -98,13 +101,21 @@ public class Lista extends AppCompatActivity {
 
         registerForContextMenu(gv);
 
+
+
     }
+
+    //===============================================================
 
     private String getFromSharedPreferences(String key) {
         SharedPreferences sharedPref = getSharedPreferences("login" ,Context.MODE_PRIVATE);
         return sharedPref.getString(key, "stive");
 
     }
+
+
+    //===============================================================
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,6 +139,10 @@ public class Lista extends AppCompatActivity {
         return true;
     }
 
+
+    //===============================================================
+
+
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater i = getMenuInflater();
@@ -143,6 +158,10 @@ public class Lista extends AppCompatActivity {
         }
         gv.invalidateViews();
     }
+
+
+    //===============================================================
+
 
     public  void excluir(MenuItem item){
         final String username =  getFromSharedPreferences("username");
@@ -167,6 +186,10 @@ public class Lista extends AppCompatActivity {
         dialog.show();
     }
 
+
+    //===============================================================
+
+
     public void baixa(MenuItem item){
         AdapterView.AdapterContextMenuInfo menuInfo =
                 (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -179,6 +202,10 @@ public class Lista extends AppCompatActivity {
 
 
     }
+
+
+    //===============================================================
+
 
     @Override
     protected void onResume() {
@@ -201,6 +228,9 @@ public class Lista extends AppCompatActivity {
 
     }
 
+    //===============================================================
+
+
     public void lista(MenuItem item) {
 
 
@@ -214,20 +244,33 @@ public class Lista extends AppCompatActivity {
 
     }
 
+    //===============================================================
+
+
     public void cadastrar(MenuItem item) {
         Intent it = new Intent(Lista.this, Cadastro.class);
         startActivity(it);
     }
+
+    //===============================================================
+
 
     public void logar(MenuItem item) {
         Intent it = new Intent(Lista.this, Login.class);
         startActivity(it);
     }
 
+    //===============================================================
+
+
     public void lista_cadastrados(MenuItem item) {
         Intent it = new Intent(Lista.this, Lista_cadatro.class);
         startActivity(it);
     }
+
+
+    //===============================================================
+
 
     public void pref(MenuItem item) {
         try {
@@ -240,10 +283,17 @@ public class Lista extends AppCompatActivity {
 
     }
 
+
+    //===============================================================
+
+
     public void add(MenuItem item) {
         Intent it = new Intent(Lista.this, MainActivity.class);
         startActivity(it);
     }
+
+    //===============================================================
+
 
     public void usuario(MenuItem item) {
 
@@ -260,13 +310,30 @@ public class Lista extends AppCompatActivity {
 //        Toast.makeText(this, "usuario: "+username, Toast.LENGTH_SHORT).show();
     }
 
+    //===============================================================
+
+
     public void lista_finalizados(MenuItem item) {
         Intent it = new Intent(Lista.this, Lista_cadatro.class);
         startActivity(it);
     }
 
+    public void lista_final(MenuItem item) {
+        Intent its = new Intent(Lista.this, Lista_itens_finalizados.class);
+        startActivity(its);
+    }
+
+
+    //===============================================================
+
+
     public void gridView(MenuItem item) {
         Intent it = new Intent(Lista.this, listaGrid.class);
         startActivity(it);
     }
+
+
+
+    //===============================================================
+
 }

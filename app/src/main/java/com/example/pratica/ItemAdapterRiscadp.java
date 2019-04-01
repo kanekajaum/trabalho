@@ -10,10 +10,10 @@ import java.util.List;
 
 public class ItemAdapterRiscadp extends BaseAdapter {
 
-    private List<Produto> produto;
+    private List<Lista_fechada> produto;
     private Activity activity;
 
-    public ItemAdapterRiscadp(Activity activity, List<Produto> produto){
+    public ItemAdapterRiscadp(Activity activity, List<Lista_fechada> produto){
         this.activity = activity;
         this.produto = produto;
     }
@@ -38,7 +38,7 @@ public class ItemAdapterRiscadp extends BaseAdapter {
         View view = activity.getLayoutInflater().inflate(R.layout.activity_item_riscado, parent, false);
         TextView nome = view.findViewById(R.id.id_nome_item_riscado);
 
-        Produto p = produto.get(position);
+        Lista_fechada p = produto.get(position);
 
         nome.setText(p.getNome());
         return view;
