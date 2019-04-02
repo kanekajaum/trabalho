@@ -106,12 +106,20 @@ public class Lista_de_itens extends AppCompatActivity {
 
              String baixar =  itensFiltrados.get(position).getNome_item();
 
+             //===========================================
+             Intent it = getIntent();
+             String item = it.getStringExtra("item");
+             String usuario = getFromSharedPreferences("username");
+             //===========================================
+
 
                 final Itens produtoExcluir = itensFiltrados.get(position);
                 final Itens ItemP = itensFiltrados.get(position);
 
                 Lista_fechada l = new Lista_fechada();
-                l.setNome(ItemP.toString());
+                l.setNome_item(ItemP.toString());
+                l.setNome_tabela(item);
+                l.setEmail_usuario(usuario);
 
                 daoitenslistaFechada.inserir(l);
 
@@ -130,18 +138,20 @@ public class Lista_de_itens extends AppCompatActivity {
                         }).create();
                 dialog.show();
 
-
             }
         });
 
         registerForContextMenu(listaViewItens);
+
+
         //-------------------------------------------------------------
+
         listaViewItensF = findViewById(R.id.listaF);
 
         daoitenslistaFechadaf = new Lista_fechadaDAO(this);
 
 
-        itemf = daoitenslistaFechadaf.ObterTodosF();
+        itemf = daoitenslistaFechadaf.getAllItens(item, usuario);
 
 
         itensFiltradosF.addAll(itemf);
@@ -154,7 +164,7 @@ public class Lista_de_itens extends AppCompatActivity {
 //        Toast.makeText(this, "Registros = "+countGrid, Toast.LENGTH_SHORT).show();
 
         if(countGrid == 0){
-            String[] itens = { "Muito bem!!!", "Agora se quiser adicionar um item a sua tabela é só cliquar no (+)", "  E depois se quiser finalizar nela só clique em cima e aceitar." };
+            String[] itens = { "Adicione um item a sua tabela com o Botão(+)." };
 
             listaViewItens.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, itens));
         }
@@ -225,8 +235,14 @@ public class Lista_de_itens extends AppCompatActivity {
             final Itens produtoExcluir = itensFiltrados.get(menuInfo.position);
             final Itens ItemP = itensFiltrados.get(menuInfo.position);
 
-                Lista_fechada l = new Lista_fechada();
-                l.setNome(ItemP.toString());
+            Intent it = getIntent();
+            String s = it.getStringExtra("item");
+            String usuario = getFromSharedPreferences("username");
+
+            Lista_fechada l = new Lista_fechada();
+            l.setNome_item(ItemP.toString());
+            l.setNome_tabela(s);
+            l.setEmail_usuario(usuario);
 
             daoitenslistaFechada.inserir(l);
 
@@ -270,17 +286,29 @@ public class Lista_de_itens extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        listaViewItensF = findViewById(R.id.listaF);
 
-        daoitenslistaFechadaf = new Lista_fechadaDAO(this);
+        String usuario = getFromSharedPreferences("username");
+        //Pega a intent de outra activity
+        Intent it = getIntent();
+
+        //Recuperei a string da outra activity
+        String item = it.getStringExtra("item");
 
 
-        itemf = daoitenslistaFechadaf.ObterTodosF();
 
 
+        itens = daoitenslista.getAllItens(item ,usuario);
+        itensFiltrados.clear();
+        itensFiltrados.addAll(itens);
+        listaViewItens.invalidateViews();
+
+
+
+
+        itemf = daoitenslistaFechadaf.getAllItens(item ,usuario);
+        itensFiltradosF.clear();
         itensFiltradosF.addAll(itemf);
+        listaViewItensF.invalidateViews();
 
-        ItemAdapterRiscadp adp = new ItemAdapterRiscadp(this, itensFiltradosF);
-        listaViewItensF.setAdapter(adp);
     }
 }

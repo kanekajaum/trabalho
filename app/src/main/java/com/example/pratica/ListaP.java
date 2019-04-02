@@ -125,7 +125,7 @@ public class ListaP extends AppCompatActivity
 //        Toast.makeText(this, "Registros = "+countGrid, Toast.LENGTH_SHORT).show();
 
         if(countGrid == 0){
-            String[] itens = { "Bem Vindo "+username+""," Para começar crie uma lista  no (+)." };
+            String[] itens = { "Bem Vindo "+username+"","Crie uma lista  no botão (+)." };
 
             gv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, itens));
         }

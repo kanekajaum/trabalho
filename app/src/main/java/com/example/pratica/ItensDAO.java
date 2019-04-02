@@ -65,10 +65,7 @@ public class ItensDAO {
         return itens;
     }
 
-
-
-
-    public void excluir(Itens produtoExcluir) {
-        banco.delete("itens", "id_itens = ?", new String[]{produtoExcluir.getId_itens().toString()});
+    public void excluir(Itens Excluir) {
+        banco.delete("itens", "id_itens = ?", new String[]{Excluir.getId_itens().toString()});
     }
 }

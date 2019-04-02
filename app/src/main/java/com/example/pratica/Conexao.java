@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Conexao extends SQLiteOpenHelper {
-    private static final String name = "tb_lista1.db";
+    private static final String name = "tb_lista3.db";
     private static final int version = 2;
     public Conexao(Context context) {
         super(context, name, null, version);
@@ -32,8 +32,10 @@ public class Conexao extends SQLiteOpenHelper {
                 "senha varchar(12))";
 
         String lista_fechada = "create table lista_fechada("+
-                "id integer primary key autoincrement," +
-                "nome varchar(50))";
+                "id_itens integer primary key autoincrement," +
+                "nome_item varchar(50)," +
+                "nome_tabela varchar(50)," +
+                "email_usuario varchar(50))";
 
 
 

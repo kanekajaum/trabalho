@@ -29,7 +29,7 @@ public class ItemAdapterRiscadp extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return produto.get(position).getId();
+        return produto.get(position).getId_itens();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ItemAdapterRiscadp extends BaseAdapter {
 
         Lista_fechada p = produto.get(position);
 
-        nome.setText(p.getNome());
+        nome.setText(p.getNome_item());
         return view;
     }
 }
