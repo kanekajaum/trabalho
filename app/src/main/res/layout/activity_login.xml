@@ -35,8 +35,9 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:onClick="Login"/>
+        android:background="@drawable/buttons"
+        android:onClick="Login"
+        android:text="Entrar" />
 
     <TextView
         android:id="@+id/textView3"
@@ -50,6 +51,7 @@
         android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cadastrar-se"
-        android:onClick="cadas"/>
+        android:background="@drawable/buttons"
+        android:onClick="cadas"
+        android:text="Cadastrar-se" />
 </LinearLayout>

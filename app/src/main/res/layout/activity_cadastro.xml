@@ -42,6 +42,7 @@
         android:id="@+id/btn_cadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cadastrar"
-        android:onClick="cadastro"/>
+        android:background="@drawable/buttons"
+        android:onClick="cadastro"
+        android:text="Cadastrar" />
 </LinearLayout>

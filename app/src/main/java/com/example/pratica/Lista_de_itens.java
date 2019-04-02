@@ -138,6 +138,9 @@ public class Lista_de_itens extends AppCompatActivity {
                         }).create();
                 dialog.show();
 
+                Intent intent = new Intent(Lista_de_itens.this, Lista_de_itens.class);
+                startActivity(intent);
+
             }
         });
 
