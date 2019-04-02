@@ -46,13 +46,26 @@ public class ItensDAO {
         return itens;
     }
 
-    public int contagem() {
-        String SelectQuery = "select COUNT(*) FROM itens";
-        Cursor cursor = banco.rawQuery(SelectQuery, null);
-        cursor.moveToFirst();
-        int cont = cursor.getInt(0);
-        return cont;
+    public List<Itens> contar(String tabela, String email) {
+        List<Itens> itens = new ArrayList<Itens>();
+
+        Cursor cursor = banco.rawQuery("SELECT COUNT(*) FROM itens WHERE nome_tabela LIKE '"+tabela+"' AND email_usuario LIKE'"+email+"'", null);
+
+        while (cursor.moveToNext()){
+            Itens it = new Itens();
+
+            it.setId_itens(cursor.getInt(0));
+            it.setNome_item(cursor.getString(1));
+            it.setNome_tabela(cursor.getString(2));
+            it.setEmail_usuario(cursor.getString(3));
+
+            itens.add(it);
+
+        }
+        return itens;
     }
+
+
 
 
     public void excluir(Itens produtoExcluir) {

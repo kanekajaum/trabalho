@@ -14,12 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnWidth="100dp"
+        android:gravity="center"
         android:horizontalSpacing="10dp"
         android:numColumns="2"
+        android:padding="10dp"
+        android:paddingTop="10dp"
         android:verticalSpacing="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        android:gravity="center"/>
+        tools:layout_editor_absoluteX="8dp" />
 
 </LinearLayout>

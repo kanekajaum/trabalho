@@ -7,8 +7,9 @@
     tools:context=".Lista">
 
 
-
-    <include layout="@layout/content_lista" />
+    <include
+        layout="@layout/content_lista"
+        android:layout_margin="5dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

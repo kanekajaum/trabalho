@@ -21,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -114,10 +115,19 @@ public class ListaP extends AppCompatActivity
 
         if(username != "stive"){
             nome = (TextView) findViewById(R.id.navNome);
-            Toast.makeText(this, "Bem bindo "+username, Toast.LENGTH_SHORT).show();
         }else{
             nome.setText("Você precisa se logar");
 
+        }
+
+        int countGrid = gv.getAdapter().getCount(); //contar itens da lista
+
+//        Toast.makeText(this, "Registros = "+countGrid, Toast.LENGTH_SHORT).show();
+
+        if(countGrid == 0){
+            String[] itens = { "Bem Vindo "+username+""," Para começar crie uma lista  no (+)." };
+
+            gv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, itens));
         }
 
 

@@ -12,7 +12,7 @@
         <TextView
             android:id="@+id/id_nome_item"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="59dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -20,10 +20,12 @@
             android:padding="15dp"
             android:paddingBottom="15dp"
             android:textAlignment="center"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.052"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="teste" />
 
 </android.support.constraint.ConstraintLayout>

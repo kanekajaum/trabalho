@@ -10,17 +10,44 @@
     tools:showIn="@layout/activity_lista_de_itens">
 
     <TextView
-        android:id="@+id/textDinamico"
+        android:id="@+id/editTextTitle_pag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="TextView"
         android:textAlignment="center"
-        android:textColorLink="@color/colorPrimary"
-        android:textSize="24sp"
-        android:textStyle="normal|bold" />
+        android:textStyle="bold|italic" />
 
     <ListView
         android:id="@+id/list_itens"
+        android:layout_width="wrap_content"
+        android:layout_height="383dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/listaF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnknownId" />
+
+    <TextView
+        android:id="@+id/editTextFinal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="24dp"
+        android:background="@android:color/background_dark"
+        android:fontFamily="sans-serif-medium"
+        android:text="Finalizados"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light" />
+
+    <ListView
+        android:id="@+id/listaF"
+        android:layout_width="wrap_content"
+        android:layout_height="188dp"
+
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </LinearLayout>

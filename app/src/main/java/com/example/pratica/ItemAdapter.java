@@ -12,10 +12,14 @@ public class ItemAdapter extends BaseAdapter {
 
     private List<Produto> produto;
     private Activity activity;
+    private ItensDAO DAOitens;
 
     public ItemAdapter(Activity activity, List<Produto> produto){
         this.activity = activity;
         this.produto = produto;
+        this.DAOitens = DAOitens;
+
+
     }
 
     public ItemAdapter(Lista_de_itens activity, List<Itens> strings) {
@@ -41,6 +45,9 @@ public class ItemAdapter extends BaseAdapter {
 
         View view = activity.getLayoutInflater().inflate(R.layout.activity_item, parent, false);
         TextView nome = view.findViewById(R.id.textNome_item);
+        TextView valor = view.findViewById(R.id.textNome_item);
+
+
 
         Produto p = produto.get(position);
 

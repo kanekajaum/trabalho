@@ -1,8 +1,6 @@
 package com.example.pratica;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,41 +8,40 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class item_da_lista extends BaseAdapter {
-
+public class ItensAdapter extends BaseAdapter {
     private List<Itens> itens;
     private Activity activity;
 
-    public item_da_lista(Activity activity, List<Itens> itens) {
+    public ItensAdapter(Activity activity, List<Itens> itens) {
         this.activity = activity;
         this.itens = itens;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return itens.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return itens.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return itens.get(position).getId_itens();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = activity.getLayoutInflater().inflate(R.layout.activity_item_da_lista, parent, false);
-        TextView nome = v.findViewById(R.id.id_nome_item);
+        View view = activity.getLayoutInflater().inflate(R.layout.itens_adapter, parent, false);
 
-        Itens p = itens.get(position);
+        TextView nome = view.findViewById(R.id.txtItenAdapter);
 
-        nome.setText(p.getNome_item());
+        Itens i = itens.get(position);
 
-        return v;
+        nome.setText(i.getNome_item());
+
+        return view;
     }
-
 }

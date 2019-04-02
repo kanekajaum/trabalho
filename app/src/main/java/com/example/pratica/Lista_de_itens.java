@@ -28,14 +28,19 @@ import java.util.List;
 
 public class Lista_de_itens extends AppCompatActivity {
 
+    private ListView listaViewItensF;
+    private Lista_fechadaDAO daoitenslistaFechadaf;
+    private List<Lista_fechada> itemf;
+    private List<Lista_fechada> itensFiltradosF = new ArrayList<Lista_fechada>();
+
     private ListView listaViewItens;
     private ItensDAO daoitenslista;
     private Lista_fechadaDAO daoitenslistaFechada;
     private List<Itens> itens;
-    TextView text;
+    private TextView text;
     private List<Itens> itensFiltrados = new ArrayList<>();
 
-    @SuppressLint("WrongViewCast")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +73,14 @@ public class Lista_de_itens extends AppCompatActivity {
 
 //        Toast.makeText(this, item, Toast.LENGTH_SHORT ).show();
 
-        setTitle("Lista "+item);
+        setTitle(item);
 
-        final TextView textViewToChange = (TextView) findViewById(R.id.textDinamico);
-        textViewToChange.setText(item);
+        text = findViewById(R.id.editTextTitle_pag);
+        text.setText(item);
+
+        text = findViewById(R.id.editTextFinal);
+        text.setText(item+"s finalizado");
+
 
         listaViewItens = findViewById(R.id.list_itens);
 
@@ -83,13 +92,11 @@ public class Lista_de_itens extends AppCompatActivity {
 
 
         itensFiltrados.addAll(itens);
-        ArrayAdapter<Itens> adapter = new ArrayAdapter<Itens>(this, android.R.layout.simple_list_item_1, itensFiltrados);
 
-//        item_da_lista ada = new item_da_lista(this, itensFiltrados);
-        listaViewItens.setAdapter(adapter);
-
-//        Toast.makeText(this, "usuario: "+usuario+" lista: "+item, Toast.LENGTH_LONG).show();
+//       ArrayAdapter<Itens> adapter = new ArrayAdapter<Itens>(this, android.R.layout.simple_list_item_1, itensFiltrados);
 //
+        ItensAdapter adapter = new ItensAdapter(this, itensFiltrados);
+        listaViewItens.setAdapter(adapter);
 
         //-------------------------------------------------------------
 
@@ -97,20 +104,60 @@ public class Lista_de_itens extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(getBaseContext(),"Você Clicou em: " +itensFiltrados
-                        .get(position).getNome_item(), Toast.LENGTH_SHORT).show();
+             String baixar =  itensFiltrados.get(position).getNome_item();
 
 
-//                Intent it = new Intent(Lista_de_itens.this, Lista_de_itens.class);
-//                it.putExtra("item", itensFiltrados.get(position).getNome_tabela());
-//                startActivity(it);
+                final Itens produtoExcluir = itensFiltrados.get(position);
+                final Itens ItemP = itensFiltrados.get(position);
+
+                Lista_fechada l = new Lista_fechada();
+                l.setNome(ItemP.toString());
+
+                daoitenslistaFechada.inserir(l);
+
+                AlertDialog dialog = new AlertDialog.Builder(Lista_de_itens.this)
+                        .setTitle("Atenção")
+                        .setMessage("Realmente deseja finalizar ''"+produtoExcluir+"''? ")
+                        .setNegativeButton("Não", null)
+                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                itensFiltrados.remove(produtoExcluir);
+                                itens.remove(produtoExcluir);
+                                daoitenslista.excluir(produtoExcluir);
+                                listaViewItens.invalidateViews();
+                            }
+                        }).create();
+                dialog.show();
+
 
             }
         });
 
         registerForContextMenu(listaViewItens);
+        //-------------------------------------------------------------
+        listaViewItensF = findViewById(R.id.listaF);
+
+        daoitenslistaFechadaf = new Lista_fechadaDAO(this);
 
 
+        itemf = daoitenslistaFechadaf.ObterTodosF();
+
+
+        itensFiltradosF.addAll(itemf);
+
+        ItemAdapterRiscadp adp = new ItemAdapterRiscadp(this, itensFiltradosF);
+        listaViewItensF.setAdapter(adp);
+        //-------------------------------------------------------------
+        int countGrid = listaViewItens.getAdapter().getCount(); //contar itens da lista
+
+//        Toast.makeText(this, "Registros = "+countGrid, Toast.LENGTH_SHORT).show();
+
+        if(countGrid == 0){
+            String[] itens = { "Muito bem!!!", "Agora se quiser adicionar um item a sua tabela é só cliquar no (+)", "  E depois se quiser finalizar nela só clique em cima e aceitar." };
+
+            listaViewItens.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, itens));
+        }
     }
 
     //-----------------------------------------------------------------
@@ -220,28 +267,20 @@ public class Lista_de_itens extends AppCompatActivity {
         startActivity(item_passado);
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        String usuario = getFromSharedPreferences("username");
-//
-//        //Pega a intent de outra activity
-//        Intent it = getIntent();
-//
-//        //Recuperei a string da outra activity
-//        String item = it.getStringExtra("item");
-//
-//
-//        listaViewItens = findViewById(R.id.list_itens);
-//
-//        daoitenslista = new ItensDAO(this);
-//
-//        //       itens = daoitenslista.ObterTodosItensDaLista("usuario","Item");
-//        itens = daoitenslista.getAllItens(item ,usuario);
-//
-//
-//        itensFiltrados.addAll(itens);
-//        ArrayAdapter<Itens> adapter = new ArrayAdapter<Itens>(this, android.R.layout.simple_list_item_1, itensFiltrados);
-//        listaViewItens.setAdapter(adapter);
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listaViewItensF = findViewById(R.id.listaF);
+
+        daoitenslistaFechadaf = new Lista_fechadaDAO(this);
+
+
+        itemf = daoitenslistaFechadaf.ObterTodosF();
+
+
+        itensFiltradosF.addAll(itemf);
+
+        ItemAdapterRiscadp adp = new ItemAdapterRiscadp(this, itensFiltradosF);
+        listaViewItensF.setAdapter(adp);
+    }
 }

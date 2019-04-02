@@ -10,8 +10,10 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_margin="10dp"
-        android:background="@color/blue"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/radius"
         tools:ignore="UselessParent">
 
         <TextView
@@ -33,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/TextItens"
+            android:id="@+id/textItens"
             android:layout_width="85dp"
             android:layout_height="18dp"
             android:layout_marginStart="8dp"
