@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pratica">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/listaLogo"
+        android:icon="@mipmap/listalogo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/agenda"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ListaP"
+            android:name=".listas.ListaP"
             android:label="@string/title_activity_lista_p"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Lista_itens_finalizados" />
-        <activity android:name=".listaGrid" />
 
-        <activity android:name=".Perfil" />
-        <activity android:name=".Add_item_lista" />
+        <activity android:name=".listas.Lista_itens_finalizados" />
+        <activity android:name=".listas.listaGrid" />
+
+        <activity android:name=".Perfil"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".usuarios.Add_item_lista" />
         <activity
-            android:name=".Lista_de_itens"
+            android:name=".listas.Lista_de_itens"
             android:label="@string/title_activity_lista_de_itens"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".item_riscado" />
-        <activity android:name=".Lista_tabela_fechada" />
-        <activity android:name=".item" />
-        <activity android:name=".Lista_cadatro" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".itens.item_riscado" />
+        <activity android:name=".listas.Lista_tabela_fechada" />
+        <activity android:name=".itens.item" />
+        <activity android:name=".listas.Lista_cadatro" />
         <activity android:name=".Login" />
         <activity android:name=".Cadastro" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Lista">
+        <activity android:name=".listas.Lista">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

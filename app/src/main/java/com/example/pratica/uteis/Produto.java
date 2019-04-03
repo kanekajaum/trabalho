@@ -1,4 +1,4 @@
-package com.example.pratica;
+package com.example.pratica.uteis;
 
 import java.io.Serializable;
 

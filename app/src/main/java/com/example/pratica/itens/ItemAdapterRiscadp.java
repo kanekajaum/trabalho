@@ -1,10 +1,13 @@
-package com.example.pratica;
+package com.example.pratica.itens;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.pratica.R;
+import com.example.pratica.listas.Lista_fechada;
 
 import java.util.List;
 

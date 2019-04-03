@@ -1,8 +1,8 @@
-package com.example.pratica;
+package com.example.pratica.listas;
 
 import java.io.Serializable;
 
-public class Itens implements Serializable {
+public class Lista_fechada implements Serializable {
     private Integer id_itens;
     private String nome_item;
     private String nome_tabela;
@@ -40,10 +40,4 @@ public class Itens implements Serializable {
         this.email_usuario = email_usuario;
     }
 
-
-    @Override
-    public String toString() {
-//        return "[ "+nome_item+" -|  |- Lista: "+nome_tabela+" ]";
-        return nome_item;
-    }
 }

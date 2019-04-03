@@ -1,4 +1,4 @@
-package com.example.pratica;
+package com.example.pratica.listas;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,12 +14,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import com.example.pratica.Cadastro;
+import com.example.pratica.itens.ItemAdapter;
+import com.example.pratica.Login;
+import com.example.pratica.MainActivity;
+import com.example.pratica.Perfil;
+import com.example.pratica.uteis.Produto;
+import com.example.pratica.R;
+import com.example.pratica.uteis.ProdutoDAO;
 
 import java.util.ArrayList;
 import java.util.List;

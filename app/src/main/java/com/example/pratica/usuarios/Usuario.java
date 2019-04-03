@@ -1,4 +1,4 @@
-package com.example.pratica;
+package com.example.pratica.usuarios;
 
 public class Usuario {
     private Integer id;

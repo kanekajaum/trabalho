@@ -1,10 +1,15 @@
-package com.example.pratica;
+package com.example.pratica.itens;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.pratica.uteis.Produto;
+import com.example.pratica.R;
+import com.example.pratica.listas.Lista_de_itens;
+import com.example.pratica.uteis.ItensDAO;
 
 import java.util.List;
 

@@ -1,9 +1,12 @@
-package com.example.pratica;
+package com.example.pratica.listas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.pratica.itens.ItemAdapterRiscadp;
+import com.example.pratica.R;
+import com.example.pratica.uteis.Lista_fechadaDAO;
 
 import java.util.ArrayList;
 import java.util.List;

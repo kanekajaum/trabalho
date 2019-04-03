@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Lista_itens_finalizados">
+    tools:context=".listas.Lista_itens_finalizados">
 
     <TextView
         android:layout_width="match_parent"

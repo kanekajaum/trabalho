@@ -1,11 +1,15 @@
-package com.example.pratica;
+package com.example.pratica.listas;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
+
+import com.example.pratica.uteis.Produto;
+import com.example.pratica.R;
+import com.example.pratica.itens.ItemAdapter;
+import com.example.pratica.uteis.ProdutoDAO;
 
 import java.util.ArrayList;
 import java.util.List;

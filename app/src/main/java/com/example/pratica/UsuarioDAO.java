@@ -4,9 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.Editable;
-import android.util.Log;
-import android.widget.Toast;
+
+import com.example.pratica.usuarios.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

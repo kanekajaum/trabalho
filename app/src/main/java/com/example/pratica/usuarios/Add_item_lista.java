@@ -1,4 +1,4 @@
-package com.example.pratica;
+package com.example.pratica.usuarios;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.pratica.itens.Itens;
+import com.example.pratica.uteis.ItensDAO;
+import com.example.pratica.listas.Lista_de_itens;
+import com.example.pratica.R;
 
 public class Add_item_lista extends AppCompatActivity {
 

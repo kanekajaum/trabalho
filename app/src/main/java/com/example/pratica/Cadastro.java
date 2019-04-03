@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pratica.usuarios.Usuario;
+
 public class Cadastro extends AppCompatActivity {
 
     private EditText nome;

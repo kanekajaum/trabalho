@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Add_item_lista">
+    tools:context=".usuarios.Add_item_lista">
 
     <TextView
         android:id="@+id/text_dinamico_add"

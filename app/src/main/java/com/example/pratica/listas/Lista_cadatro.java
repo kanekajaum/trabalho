@@ -1,4 +1,4 @@
-package com.example.pratica;
+package com.example.pratica.listas;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,6 +11,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.pratica.R;
+import com.example.pratica.UsuarioDAO;
+import com.example.pratica.usuarios.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

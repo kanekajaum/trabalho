@@ -1,6 +1,5 @@
-package com.example.pratica;
+package com.example.pratica.listas;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
@@ -17,11 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.pratica.itens.ItemAdapterRiscadp;
+import com.example.pratica.itens.Itens;
+import com.example.pratica.itens.ItensAdapter;
+import com.example.pratica.R;
+import com.example.pratica.usuarios.Add_item_lista;
+import com.example.pratica.uteis.ItensDAO;
+import com.example.pratica.uteis.Lista_fechadaDAO;
 
 import java.util.ArrayList;
 import java.util.List;
