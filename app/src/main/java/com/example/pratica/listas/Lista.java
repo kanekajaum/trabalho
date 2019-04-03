@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.example.pratica.Cadastro;
 import com.example.pratica.itens.ItemAdapter;
 import com.example.pratica.Login;
-import com.example.pratica.MainActivity;
+import com.example.pratica.uteis.MainActivity;
 import com.example.pratica.Perfil;
 import com.example.pratica.uteis.Produto;
 import com.example.pratica.R;

@@ -1,4 +1,4 @@
-package com.example.pratica;
+package com.example.pratica.uteis;
 
 import android.content.Context;
 import android.database.Cursor;

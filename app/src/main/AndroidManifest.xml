@@ -34,7 +34,7 @@
         <activity android:name=".listas.Lista_cadatro" />
         <activity android:name=".Login" />
         <activity android:name=".Cadastro" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".uteis.MainActivity" />
         <activity android:name=".listas.Lista">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

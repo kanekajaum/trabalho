@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.pratica.Conexao;
 import com.example.pratica.listas.Lista_fechada;
 
 import java.util.ArrayList;

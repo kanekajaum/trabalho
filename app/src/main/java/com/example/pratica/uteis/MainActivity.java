@@ -1,4 +1,4 @@
-package com.example.pratica;
+package com.example.pratica.uteis;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pratica.R;
 import com.example.pratica.listas.Lista;
-import com.example.pratica.uteis.Produto;
-import com.example.pratica.uteis.ProdutoDAO;
 
 public class MainActivity extends AppCompatActivity {
 

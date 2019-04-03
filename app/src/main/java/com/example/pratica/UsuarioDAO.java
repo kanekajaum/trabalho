@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.pratica.usuarios.Usuario;
+import com.example.pratica.uteis.Conexao;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.example.pratica.listas;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,7 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -29,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pratica.Login;
-import com.example.pratica.MainActivity;
+import com.example.pratica.uteis.MainActivity;
 import com.example.pratica.Perfil;
 import com.example.pratica.uteis.Produto;
 import com.example.pratica.R;
