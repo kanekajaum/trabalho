@@ -1,6 +1,7 @@
 package com.example.pratica.itens;
 
 import android.app.Activity;
+import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -42,6 +43,7 @@ public class ItemAdapterRiscadp extends BaseAdapter {
         TextView nome = view.findViewById(R.id.id_nome_item_riscado);
 
         Lista_fechada p = produto.get(position);
+        nome.setPaintFlags(nome.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         nome.setText(p.getNome_item());
         return view;

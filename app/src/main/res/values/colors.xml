@@ -5,5 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorSecondary">#0099FF</color>
     <color name="blue">#2DBCCE</color>
-    <color name="cinza">#e5e5e5</color>
+    <color name="cinza">#CBCECB</color>
+    <color name="amarelo">#F8C301</color>
+    <color name="roxo">#901D78</color>
 </resources>

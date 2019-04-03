@@ -1,6 +1,7 @@
 package com.example.pratica.itens;
 
 import android.app.Activity;
+import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -23,7 +24,6 @@ public class ItemAdapter extends BaseAdapter {
         this.activity = activity;
         this.produto = produto;
         this.DAOitens = DAOitens;
-
 
     }
 
@@ -51,7 +51,6 @@ public class ItemAdapter extends BaseAdapter {
         View view = activity.getLayoutInflater().inflate(R.layout.activity_item, parent, false);
         TextView nome = view.findViewById(R.id.textNome_item);
         TextView valor = view.findViewById(R.id.textNome_item);
-
 
 
         Produto p = produto.get(position);

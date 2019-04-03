@@ -11,15 +11,19 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"/>
 
-    <include layout="@layout/content_lista_de_itens" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_lista_de_itens" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
+        android:layout_width="188dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/design_default_color_primary_dark"
+        app:backgroundTint="@color/amarelo"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="right|top"
         app:srcCompat="@mipmap/plus" />
 
 </android.support.design.widget.CoordinatorLayout>

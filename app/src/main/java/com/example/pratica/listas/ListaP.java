@@ -44,8 +44,6 @@ public class ListaP extends AppCompatActivity
     private ProdutoDAO dao;
     private List<Produto> produtos;
     private GridView gv;
-    TextView perfilNome = null;
-    TextView perfilEmail = null;
 
     private List<Produto> produtosFiltrados = new ArrayList<>();
 
@@ -78,10 +76,7 @@ public class ListaP extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
         gv = (GridView) findViewById(R.id.listaGrid);
-
 
         dao = new ProdutoDAO(this);
 
@@ -248,9 +243,7 @@ public class ListaP extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

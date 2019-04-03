@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="4dp"
+    android:layout_marginEnd="4dp"
     android:orientation="vertical"
     tools:context=".itens.item">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="3dp"
-        android:background="@drawable/radius"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/roxo"
         tools:ignore="UselessParent">
 
         <TextView
@@ -28,6 +30,7 @@
             android:fontFamily="sans-serif"
             android:text="Arroz"
             android:textAlignment="center"
+            android:textColor="@android:color/background_light"
             android:textSize="26sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +47,7 @@
             android:layout_marginBottom="8dp"
             android:text="itens: secret"
             android:textAlignment="center"
+            android:textColor="@android:color/background_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.972"
