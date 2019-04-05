@@ -83,6 +83,7 @@ public class ListaP extends AppCompatActivity
 
 
 
+
 //            produtos = dao.ObterTodos();
         produtos = dao.getAllItens(username);
 
@@ -110,6 +111,8 @@ public class ListaP extends AppCompatActivity
             }
         });
 
+
+
         registerForContextMenu(gv);
 
         TextView nome = (TextView) findViewById(R.id.navNome);
@@ -120,6 +123,7 @@ public class ListaP extends AppCompatActivity
             nome.setText("Você precisa se logar");
 
         }
+
 
         int countGrid = gv.getAdapter().getCount(); //contar itens da lista
 
@@ -136,6 +140,7 @@ public class ListaP extends AppCompatActivity
     private String getFromSharedPreferences(String key) {
         SharedPreferences sharedPref = getSharedPreferences("login" , Context.MODE_PRIVATE);
         return sharedPref.getString(key, "stive");
+
 
     }
     @Override
@@ -256,6 +261,7 @@ public class ListaP extends AppCompatActivity
 //
 //        return true;
 //    }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
