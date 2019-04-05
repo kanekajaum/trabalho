@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"
-        android:background="@color/amarelo"
+        android:background="@mipmap/fundo"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"

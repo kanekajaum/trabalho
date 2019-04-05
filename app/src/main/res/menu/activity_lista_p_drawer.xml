@@ -14,7 +14,7 @@
             android:title="Lista de Usuarios" />
         <item
             android:id="@+id/nav_finalizados"
-            android:icon="@mipmap/ok"
+            android:icon="?attr/actionModePasteDrawable"
             android:title="Itens Finalizados" />
         <item
             android:id="@+id/nav_exit"

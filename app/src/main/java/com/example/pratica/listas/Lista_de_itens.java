@@ -141,9 +141,7 @@ public class Lista_de_itens extends AppCompatActivity {
                             }
                         }).create();
                 dialog.show();
-
-                Intent intent = new Intent(Lista_de_itens.this, Lista_de_itens.class);
-                startActivity(intent);
+                
 
             }
         });
@@ -175,6 +173,7 @@ public class Lista_de_itens extends AppCompatActivity {
 
             listaViewItens.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, itens));
         }
+
     }
 
     //-----------------------------------------------------------------
@@ -269,7 +268,7 @@ public class Lista_de_itens extends AppCompatActivity {
             dialog.show();
 
 
-            Toast.makeText(this, produtoExcluir+" inseridoo la lista de finalizados.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, produtoExcluir+" inserido la lista de finalizados.", Toast.LENGTH_SHORT).show();
 
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -317,5 +316,30 @@ public class Lista_de_itens extends AppCompatActivity {
         itensFiltradosF.addAll(itemf);
         listaViewItensF.invalidateViews();
 
+
+    }
+
+    public void update(View view) {
+
+        finish();
+
+        //Pega a intent de outra activity
+        Intent it = getIntent();
+
+        //Recuperei a string da outra activity
+        String item = it.getStringExtra("item");
+
+        Intent update = new Intent(this, Lista_de_itens.class);
+        update.putExtra("item", item);
+        startActivity(update);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+
+        Intent volta = new Intent(this, ListaP.class);
+        startActivity(volta);
     }
 }

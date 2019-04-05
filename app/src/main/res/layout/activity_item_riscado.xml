@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="399dp"
-        android:layout_height="46dp"
+        android:layout_height="52dp"
         android:orientation="horizontal"
         android:padding="3dp"
         android:paddingStart="3dp"
@@ -27,7 +27,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:src="@android:drawable/radiobutton_on_background" />
+            android:src="@mipmap/ok" />
 
         <TextView
             android:id="@+id/id_nome_item_riscado"
@@ -42,7 +42,7 @@
             android:padding="15dp"
             android:paddingBottom="15dp"
             android:text="Arroz"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.052"

@@ -31,7 +31,7 @@ public class Lista_fechadaDAO {
 
     public List<Lista_fechada> ObterTodosF(){
         List<Lista_fechada> Lista_fechada = new ArrayList<>();
-        Cursor cursor = banco.query("lista_fechada", new String[]{"id_itens","nome_item", "nome_tabela", "email_usuario" }, null, null, null, null, null);
+        Cursor cursor = banco.query("lista_fechada", new String[]{"id_itens","nome_item", "nome_tabela", "email_usuario" }, null, null, null, null, "id_itens"+" DESC ");
 
         while (cursor.moveToNext()){
             Lista_fechada p = new Lista_fechada();
@@ -50,7 +50,7 @@ public class Lista_fechadaDAO {
     public List<Lista_fechada> getAllItens(String tabela, String email) {
         List<Lista_fechada> lista = new ArrayList<Lista_fechada>();
 
-        Cursor cursor = banco.rawQuery("SELECT * FROM lista_fechada WHERE nome_tabela LIKE '"+tabela+"' AND email_usuario LIKE '"+email+"'", null);
+        Cursor cursor = banco.rawQuery("SELECT * FROM lista_fechada WHERE nome_tabela LIKE '"+tabela+"' AND email_usuario LIKE '"+email+"' ORDER BY id_itens DESC LIMIT 6 ", null);// LIMIT 6
 
         while (cursor.moveToNext()){
             Lista_fechada it = new Lista_fechada();

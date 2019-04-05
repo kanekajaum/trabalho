@@ -21,9 +21,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/amarelo"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="right|top"
         app:srcCompat="@mipmap/plus" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:onClick="update"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:borderWidth="0dp"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="left|top"
+        app:srcCompat="@mipmap/update" />
 
 </android.support.design.widget.CoordinatorLayout>

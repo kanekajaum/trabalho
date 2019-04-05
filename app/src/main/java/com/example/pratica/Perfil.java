@@ -26,12 +26,15 @@ public class Perfil extends AppCompatActivity {
 
         String item = it.getStringExtra("usuario");
         String nome = UsuarioDAO.usuarioNome(item);
+        setTitle("Olá, "+nome);
+
+
 
         final TextView textViewToChang = (TextView) findViewById(R.id.textPerfilNome);
         textViewToChang.setText("Nome: "+nome);
 
         final TextView textViewToChange = (TextView) findViewById(R.id.textPerfilEmail);
-        textViewToChange.setText("Email: "+item);
+        textViewToChange.setText("Email:"+item);
     }
 
     public void deslogar(View view){

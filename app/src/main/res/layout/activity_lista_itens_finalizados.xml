@@ -15,9 +15,11 @@
         android:textAlignment="center"
         android:textSize="20dp"
         android:textStyle="bold" />
+
     <ListView
+        android:id="@+id/listaFechada"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listaFechada"></ListView>
+        android:background="@mipmap/fundo"></ListView>
 
 </LinearLayout>
