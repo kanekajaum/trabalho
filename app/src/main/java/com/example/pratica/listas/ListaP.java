@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pratica.Login;
+import com.example.pratica.uteis.ItensDAO;
 import com.example.pratica.uteis.MainActivity;
 import com.example.pratica.Perfil;
 import com.example.pratica.uteis.Produto;
@@ -79,6 +80,10 @@ public class ListaP extends AppCompatActivity
         gv = (GridView) findViewById(R.id.listaGrid);
 
         dao = new ProdutoDAO(this);
+
+        ItensDAO daoItens = new ItensDAO(this);
+//        String aqui = daoItens.contar("Casa", username);
+//        Toast.makeText(this,aqui, Toast.LENGTH_SHORT).show();
 
 
 

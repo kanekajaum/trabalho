@@ -11,9 +11,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".listas.ListaP"
-            android:label="@string/title_activity_lista_p"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
 
         <activity android:name=".listas.Lista_itens_finalizados" />
         <activity android:name=".listas.listaGrid" />
@@ -34,7 +32,9 @@
         <activity android:name=".Login" />
         <activity android:name=".Cadastro" />
         <activity android:name=".uteis.MainActivity" />
-        <activity android:name=".listas.Lista">
+        <activity android:name=".listas.ListaP"
+            android:label="@string/title_activity_lista_p"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

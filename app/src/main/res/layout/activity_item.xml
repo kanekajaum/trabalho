@@ -15,7 +15,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
-        android:background="@color/roxo"
+        android:background="@color/colorSecondary"
         tools:ignore="UselessParent">
 
         <TextView
@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textItens"
+            android:id="@+id/qtdItens"
             android:layout_width="85dp"
             android:layout_height="18dp"
             android:layout_marginStart="8dp"
@@ -52,7 +52,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.972"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textNome_item" />
+            app:layout_constraintTop_toBottomOf="@+id/textNome_item"
+            app:layout_constraintVertical_bias="0.666" />
 
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

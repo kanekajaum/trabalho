@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pratica.R;
-import com.example.pratica.listas.Lista;
+import com.example.pratica.listas.ListaP;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(MainActivity.this, "usuario: "+usuario+ " || "+nome.getText().toString()+" inserido com sucesso!!!",Toast.LENGTH_LONG).show();
 
-            Intent it = new Intent(MainActivity.this, Lista.class);
+            Intent it = new Intent(MainActivity.this, ListaP.class);
             startActivity(it);
 
             finish();
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Lista(View view) {
-        Intent it = new Intent(this, Lista.class);
+        Intent it = new Intent(this, ListaP.class);
         startActivity(it);
     }
 

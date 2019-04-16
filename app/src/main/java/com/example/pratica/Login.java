@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pratica.listas.Lista;
+import com.example.pratica.listas.ListaP;
 import com.example.pratica.usuarios.Usuario;
 
 public class Login extends AppCompatActivity {
@@ -53,7 +53,7 @@ public class Login extends AppCompatActivity {
 
             carregarPreferencias(txt_email);
 
-            Intent intent = new Intent(this, Lista.class);
+            Intent intent = new Intent(this, ListaP.class);
             startActivity(intent);
 
 

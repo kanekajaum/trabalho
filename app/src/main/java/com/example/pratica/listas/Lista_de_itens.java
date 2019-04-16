@@ -104,6 +104,7 @@ public class Lista_de_itens extends AppCompatActivity {
 
         //-------------------------------------------------------------
 
+
         listaViewItens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -125,22 +126,15 @@ public class Lista_de_itens extends AppCompatActivity {
                 l.setNome_tabela(item);
                 l.setEmail_usuario(usuario);
 
-                daoitenslistaFechada.inserir(l);
+                //===========================================
 
-                AlertDialog dialog = new AlertDialog.Builder(Lista_de_itens.this)
-                        .setTitle("Atenção")
-                        .setMessage("Realmente deseja finalizar ''"+produtoExcluir+"''? ")
-                        .setNegativeButton("Não", null)
-                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                                daoitenslistaFechada.inserir(l);
                                 itensFiltrados.remove(produtoExcluir);
                                 itens.remove(produtoExcluir);
                                 daoitenslista.excluir(produtoExcluir);
                                 listaViewItens.invalidateViews();
-                            }
-                        }).create();
-                dialog.show();
+                                Toast.makeText(Lista_de_itens.this, "Finalizado", Toast.LENGTH_SHORT).show();
+
                 
 
             }
@@ -301,20 +295,12 @@ public class Lista_de_itens extends AppCompatActivity {
         String item = it.getStringExtra("item");
 
 
-
-
-        itens = daoitenslista.getAllItens(item ,usuario);
-        itensFiltrados.clear();
-        itensFiltrados.addAll(itens);
-        listaViewItens.invalidateViews();
-
-
-
-
         itemf = daoitenslistaFechadaf.getAllItens(item ,usuario);
         itensFiltradosF.clear();
         itensFiltradosF.addAll(itemf);
         listaViewItensF.invalidateViews();
+
+
 
 
     }

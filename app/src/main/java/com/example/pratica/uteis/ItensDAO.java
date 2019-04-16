@@ -47,25 +47,44 @@ public class ItensDAO {
         }
         return itens;
     }
+    public String contar(String tabela,String email){
 
-    public List<Itens> contar(String tabela, String email) {
-        List<Itens> itens = new ArrayList<Itens>();
 
         Cursor cursor = banco.rawQuery("SELECT COUNT(*) FROM itens WHERE nome_tabela LIKE '"+tabela+"' AND email_usuario LIKE'"+email+"'", null);
 
-        while (cursor.moveToNext()){
-            Itens it = new Itens();
+        cursor.moveToFirst();
 
-            it.setId_itens(cursor.getInt(0));
-            it.setNome_item(cursor.getString(1));
-            it.setNome_tabela(cursor.getString(2));
-            it.setEmail_usuario(cursor.getString(3));
+        String nomeString = cursor.getString(cursor.getColumnIndex("email"));
+        String tabelaString = cursor.getString(cursor.getColumnIndex("tabela"));
 
-            itens.add(it);
 
-        }
-        return itens;
+        StringBuilder conversor = new StringBuilder();
+        conversor.append(nomeString);
+        conversor.append(tabelaString);
+
+
+        return conversor.toString();
+
     }
+
+//    public List<Itens> contar(String tabela, String email) {
+//        List<Itens> itens = new ArrayList<Itens>();
+//
+//        Cursor cursor = banco.rawQuery("SELECT COUNT(*) FROM itens WHERE nome_tabela LIKE '"+tabela+"' AND email_usuario LIKE'"+email+"'", null);
+//
+//        while (cursor.moveToNext()){
+//            Itens it = new Itens();
+//
+//            it.setId_itens(cursor.getInt(0));
+//            it.setNome_item(cursor.getString(1));
+//            it.setNome_tabela(cursor.getString(2));
+//            it.setEmail_usuario(cursor.getString(3));
+//
+//            itens.add(it);
+//
+//        }
+//        return itens;
+//    }
 
     public void excluir(Itens Excluir) {
         banco.delete("itens", "id_itens = ?", new String[]{Excluir.getId_itens().toString()});
