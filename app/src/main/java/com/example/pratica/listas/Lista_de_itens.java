@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.example.pratica.itens.ItensAdapter;
 import com.example.pratica.R;
 import com.example.pratica.usuarios.Add_item_lista;
 import com.example.pratica.uteis.ItensDAO;
+import com.example.pratica.uteis.Lista_fechada;
 import com.example.pratica.uteis.Lista_fechadaDAO;
 
 import java.util.ArrayList;
@@ -43,6 +45,8 @@ public class Lista_de_itens extends AppCompatActivity {
     private List<Itens> itens;
     private TextView text;
     private List<Itens> itensFiltrados = new ArrayList<>();
+    private String Item;
+    private ImageView img;
 
 
     @Override
@@ -51,6 +55,9 @@ public class Lista_de_itens extends AppCompatActivity {
         setContentView(R.layout.activity_lista_de_itens);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        img = findViewById(R.id.imageadapter);
+
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -73,17 +80,17 @@ public class Lista_de_itens extends AppCompatActivity {
         Intent it = getIntent();
 
         //Recuperei a string da outra activity
-        String item = it.getStringExtra("item");
+         Item = it.getStringExtra("item");
 
 //        Toast.makeText(this, item, Toast.LENGTH_SHORT ).show();
 
-        setTitle(item);
+        setTitle(Item);
 
         text = findViewById(R.id.editTextTitle_pag);
-        text.setText(item);
+        text.setText(Item);
 
         text = findViewById(R.id.editTextFinal);
-        text.setText(item+"s finalizado");
+        text.setText(Item+"s finalizado");
 
 
         listaViewItens = findViewById(R.id.list_itens);
@@ -92,7 +99,7 @@ public class Lista_de_itens extends AppCompatActivity {
         daoitenslistaFechada = new Lista_fechadaDAO(this);
 
  //       itens = daoitenslista.ObterTodosItensDaLista("usuario","Item");
-        itens = daoitenslista.getAllItens(item ,usuario);
+        itens = daoitenslista.getAllItens(Item ,usuario);
 
 
         itensFiltrados.addAll(itens);
@@ -135,7 +142,9 @@ public class Lista_de_itens extends AppCompatActivity {
                                 listaViewItens.invalidateViews();
                                 Toast.makeText(Lista_de_itens.this, "Finalizado", Toast.LENGTH_SHORT).show();
 
-                
+                Intent itt = new Intent(Lista_de_itens.this, Lista_de_itens.class);
+                itt.putExtra("item", Item);
+                startActivity(itt);
 
             }
         });
@@ -150,13 +159,48 @@ public class Lista_de_itens extends AppCompatActivity {
         daoitenslistaFechadaf = new Lista_fechadaDAO(this);
 
 
-        itemf = daoitenslistaFechadaf.getAllItens(item, usuario);
+        itemf = daoitenslistaFechadaf.getAllItens(Item, usuario);
 
 
         itensFiltradosF.addAll(itemf);
 
         ItemAdapterRiscadp adp = new ItemAdapterRiscadp(this, itensFiltradosF);
         listaViewItensF.setAdapter(adp);
+
+        listaViewItensF.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                final String nominho = itensFiltradosF.get(position).getNome_item();
+                final Lista_fechada nominhoo = itensFiltradosF.get(position);
+
+
+                //===========================================
+                Intent it = getIntent();
+                String item = it.getStringExtra("item");
+                String usuario = getFromSharedPreferences("username");
+                //===========================================
+                Toast.makeText(Lista_de_itens.this, nominho, Toast.LENGTH_SHORT).show();
+
+                Itens i = new Itens();
+                i.setNome_item(nominho);
+                i.setNome_tabela(item);
+                i.setEmail_usuario(usuario);
+
+                daoitenslista.inserir(i);
+                itensFiltradosF.remove(nominho);
+                itemf.remove(nominho);
+                daoitenslistaFechadaf.excluir(nominhoo);
+                listaViewItensF.invalidateViews();
+
+
+
+                Intent itt = new Intent(Lista_de_itens.this, Lista_de_itens.class);
+                itt.putExtra("item", Item);
+                startActivity(itt);
+
+            }
+        });
         //-------------------------------------------------------------
         int countGrid = listaViewItens.getAdapter().getCount(); //contar itens da lista
 
@@ -205,10 +249,11 @@ public class Lista_de_itens extends AppCompatActivity {
                 (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
         final Itens produtoExcluir = itensFiltrados.get(menuInfo.position);
+        final String nominho = itensFiltrados.get(menuInfo.position).getNome_item();
 
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Atenção")
-                .setMessage("Realmente deseja excluir "+menuInfo.position+"?")
+                .setMessage("Realmente deseja excluir "+nominho+"?")
                 .setNegativeButton("Não", null)
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override

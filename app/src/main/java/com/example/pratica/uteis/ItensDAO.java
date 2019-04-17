@@ -3,6 +3,7 @@ package com.example.pratica.uteis;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.pratica.itens.Itens;
@@ -47,44 +48,15 @@ public class ItensDAO {
         }
         return itens;
     }
-    public String contar(String tabela,String email){
+    public int getProfilesCount(String itens) {
 
-
-        Cursor cursor = banco.rawQuery("SELECT COUNT(*) FROM itens WHERE nome_tabela LIKE '"+tabela+"' AND email_usuario LIKE'"+email+"'", null);
-
-        cursor.moveToFirst();
-
-        String nomeString = cursor.getString(cursor.getColumnIndex("email"));
-        String tabelaString = cursor.getString(cursor.getColumnIndex("tabela"));
-
-
-        StringBuilder conversor = new StringBuilder();
-        conversor.append(nomeString);
-        conversor.append(tabelaString);
-
-
-        return conversor.toString();
-
+        String countQuery = "SELECT  * FROM " + itens;
+        SQLiteDatabase db = banco;
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
     }
-
-//    public List<Itens> contar(String tabela, String email) {
-//        List<Itens> itens = new ArrayList<Itens>();
-//
-//        Cursor cursor = banco.rawQuery("SELECT COUNT(*) FROM itens WHERE nome_tabela LIKE '"+tabela+"' AND email_usuario LIKE'"+email+"'", null);
-//
-//        while (cursor.moveToNext()){
-//            Itens it = new Itens();
-//
-//            it.setId_itens(cursor.getInt(0));
-//            it.setNome_item(cursor.getString(1));
-//            it.setNome_tabela(cursor.getString(2));
-//            it.setEmail_usuario(cursor.getString(3));
-//
-//            itens.add(it);
-//
-//        }
-//        return itens;
-//    }
 
     public void excluir(Itens Excluir) {
         banco.delete("itens", "id_itens = ?", new String[]{Excluir.getId_itens().toString()});

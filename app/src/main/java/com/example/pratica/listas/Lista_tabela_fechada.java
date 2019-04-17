@@ -7,7 +7,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 
 import com.example.pratica.R;
-import com.example.pratica.listas.Lista_fechada;
+import com.example.pratica.uteis.Lista_fechada;
 import com.example.pratica.uteis.Lista_fechadaDAO;
 
 import java.util.ArrayList;

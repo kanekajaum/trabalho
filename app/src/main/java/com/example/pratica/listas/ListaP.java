@@ -45,10 +45,12 @@ public class ListaP extends AppCompatActivity
     private ProdutoDAO dao;
     private List<Produto> produtos;
     private GridView gv;
+    private int res;
 
     private List<Produto> produtosFiltrados = new ArrayList<>();
 
     private ListView listaView;
+    private TextView qtdItens;
 
 
     @Override
@@ -78,6 +80,7 @@ public class ListaP extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         gv = (GridView) findViewById(R.id.listaGrid);
+        qtdItens = (TextView) findViewById(R.id.qtdItens);
 
         dao = new ProdutoDAO(this);
 
@@ -98,20 +101,27 @@ public class ListaP extends AppCompatActivity
         ItemAdapter adapter = new ItemAdapter(this, produtosFiltrados);
         gv.setAdapter(adapter);
     //------------------------------------------------------------------------------
-//        perfilNome  = (TextView) findViewById(R.id.navNome);
-//        perfilNome.setText(username);
 
-        //-----------------------------------------------------------------------------
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//                Toast.makeText(getBaseContext(),"Você Clicou em: " +produtosFiltrados.get(position).getNome(), Toast.LENGTH_SHORT).show();
+//
 
 
                 Intent it = new Intent(ListaP.this, Lista_de_itens.class);
                 it.putExtra("item", produtosFiltrados.get(position).getNome());
                 startActivity(it);
+
+
+                String username =  getFromSharedPreferences("username");
+
+                String nome =  produtosFiltrados.get(position).getNome();
+
+                ItensDAO itn = new ItensDAO(ListaP.this);
+
+                 res = itn.getProfilesCount("itens");
+
 
             }
         });

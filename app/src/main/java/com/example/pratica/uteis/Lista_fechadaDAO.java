@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.pratica.listas.Lista_fechada;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,4 +67,6 @@ public class Lista_fechadaDAO {
     public void excluir(Lista_fechada produtoExcluir) {
         banco.delete("lista_fechada", "id_itens = ?", new String[]{produtoExcluir.getId_itens().toString()});
     }
+
+
 }

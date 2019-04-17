@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fundo"
     android:orientation="vertical"
     tools:context=".Cadastro">
 
@@ -41,6 +40,11 @@
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
 
     <Button
         android:id="@+id/btn_cadastro"

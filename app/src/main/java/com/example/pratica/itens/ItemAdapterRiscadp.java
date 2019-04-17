@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.pratica.R;
-import com.example.pratica.listas.Lista_fechada;
+import com.example.pratica.uteis.Lista_fechada;
 
 import java.util.List;
 
