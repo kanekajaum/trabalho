@@ -369,7 +369,6 @@ public class Lista_de_itens extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
-
         Intent volta = new Intent(this, ListaP.class);
         startActivity(volta);
     }
