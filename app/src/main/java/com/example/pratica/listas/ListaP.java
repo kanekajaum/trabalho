@@ -80,7 +80,6 @@ public class ListaP extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         gv = (GridView) findViewById(R.id.listaGrid);
-        qtdItens = (TextView) findViewById(R.id.qtdItens);
 
         dao = new ProdutoDAO(this);
 
@@ -312,6 +311,18 @@ public class ListaP extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String username =  getFromSharedPreferences("username");
+        produtos = dao.getAllItens(username);
+        produtosFiltrados.clear();
+        produtosFiltrados.addAll(produtos);
+        gv.invalidateViews();
+
+
     }
 
 

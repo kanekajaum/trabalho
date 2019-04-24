@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.add_lista);
 
         nome = findViewById(R.id.editNome);
         dao = new ProdutoDAO(this);
@@ -31,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater i = getMenuInflater();
+        i.inflate(R.menu.add_lista, menu);
+        return true;
+    }
+
     private String getFromSharedPreferences(String key) {
         SharedPreferences sharedPref = getSharedPreferences("login" , Context.MODE_PRIVATE);
         return sharedPref.getString(key, "stive");
@@ -67,4 +78,32 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
 
+    public void add_lista(MenuItem item) {
+        String usuario = getFromSharedPreferences("username");
+        Produto p = new Produto();
+
+        p.setNome(nome.getText().toString());
+        p.setEmail_usuario_lista(usuario);
+
+        if (nome.getText().toString() == " " || nome.getText().toString() == ""){
+            Toast.makeText(this, "Por favor Preencha os campos corretamente", Toast.LENGTH_SHORT).show();
+        }else{
+            dao.inserir(p);
+
+            Toast.makeText(MainActivity.this, "usuario: "+usuario+ " || "+nome.getText().toString()+" inserido com sucesso!!!",Toast.LENGTH_LONG).show();
+
+            Intent it = new Intent(MainActivity.this, ListaP.class);
+            startActivity(it);
+
+            finish();
+        }
+
+    }
+
+    public void voltar_lista(MenuItem item) {
+        Intent it = new Intent(MainActivity.this, ListaP.class);
+        startActivity(it);
+
+        finish();
+    }
 }

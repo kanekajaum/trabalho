@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".listas.Lista_de_itens">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"/>
-
     <include
         android:id="@+id/include"
         layout="@layout/content_lista_de_itens" />
@@ -21,9 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@android:color/darker_gray"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="right|top"
-        app:srcCompat="@mipmap/plus" />
+        app:srcCompat="@mipmap/plus"/>
 
 </android.support.design.widget.CoordinatorLayout>

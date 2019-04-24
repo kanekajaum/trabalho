@@ -1,5 +1,7 @@
 package com.example.pratica.listas;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -30,8 +32,8 @@ public class Lista_itens_finalizados extends AppCompatActivity {
 
         daoitenslistaFechada = new Lista_fechadaDAO(this);
 
-
-        item = daoitenslistaFechada.ObterTodosF();
+        String usuario = getFromSharedPreferences("username");
+        item = daoitenslistaFechada.ObterTodos_2(usuario);
 
 
         itensFiltrados.addAll(item);
@@ -41,6 +43,11 @@ public class Lista_itens_finalizados extends AppCompatActivity {
 
         ItemAdapterRiscadp adapter1 = new ItemAdapterRiscadp(this, itensFiltrados);
         listaViewItens.setAdapter(adapter1);
+
+    }
+    private String getFromSharedPreferences(String key) {
+        SharedPreferences sharedPref = getSharedPreferences("login" , Context.MODE_PRIVATE);
+        return sharedPref.getString(key, "stive");
 
     }
 }

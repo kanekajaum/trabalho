@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".listas.Lista">
+    tools:context=".listas.ListaP"
+    android:background="@color/cinza">
 
 
     <include
-        layout="@layout/content_lista"
-        android:layout_margin="5dp" />
+        layout="@layout/content_lista"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -17,8 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:background="@color/colorPrimary"
-        app:backgroundTint="@color/colorPrimary"
+        android:background="@color/roxo"
+        app:backgroundTint="@color/roxo"
         app:srcCompat="@mipmap/plus" />
 
 </android.support.design.widget.CoordinatorLayout>

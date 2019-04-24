@@ -20,10 +20,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pratica.R;
 import com.example.pratica.itens.ItemAdapterRiscadp;
 import com.example.pratica.itens.Itens;
 import com.example.pratica.itens.ItensAdapter;
-import com.example.pratica.R;
 import com.example.pratica.usuarios.Add_item_lista;
 import com.example.pratica.uteis.ItensDAO;
 import com.example.pratica.uteis.Lista_fechada;
@@ -33,12 +33,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lista_de_itens extends AppCompatActivity {
-
     private ListView listaViewItensF;
     private Lista_fechadaDAO daoitenslistaFechadaf;
     private List<Lista_fechada> itemf;
     private List<Lista_fechada> itensFiltradosF = new ArrayList<Lista_fechada>();
-
     private ListView listaViewItens;
     private ItensDAO daoitenslista;
     private Lista_fechadaDAO daoitenslistaFechada;
@@ -48,7 +46,6 @@ public class Lista_de_itens extends AppCompatActivity {
     private String Item;
     private ImageView img;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +53,6 @@ public class Lista_de_itens extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         img = findViewById(R.id.imageadapter);
-
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -80,7 +76,7 @@ public class Lista_de_itens extends AppCompatActivity {
         Intent it = getIntent();
 
         //Recuperei a string da outra activity
-         Item = it.getStringExtra("item");
+        Item = it.getStringExtra("item");
 
 //        Toast.makeText(this, item, Toast.LENGTH_SHORT ).show();
 
@@ -90,7 +86,7 @@ public class Lista_de_itens extends AppCompatActivity {
         text.setText(Item);
 
         text = findViewById(R.id.editTextFinal);
-        text.setText(Item+"s finalizado");
+        text.setText(Item + "s finalizado");
 
 
         listaViewItens = findViewById(R.id.list_itens);
@@ -98,8 +94,8 @@ public class Lista_de_itens extends AppCompatActivity {
         daoitenslista = new ItensDAO(this);
         daoitenslistaFechada = new Lista_fechadaDAO(this);
 
- //       itens = daoitenslista.ObterTodosItensDaLista("usuario","Item");
-        itens = daoitenslista.getAllItens(Item ,usuario);
+        //       itens = daoitenslista.ObterTodosItensDaLista("usuario","Item");
+        itens = daoitenslista.getAllItens(Item, usuario);
 
 
         itensFiltrados.addAll(itens);
@@ -116,13 +112,13 @@ public class Lista_de_itens extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-             String baixar =  itensFiltrados.get(position).getNome_item();
+                String baixar = itensFiltrados.get(position).getNome_item();
 
-             //===========================================
-             Intent it = getIntent();
-             String item = it.getStringExtra("item");
-             String usuario = getFromSharedPreferences("username");
-             //===========================================
+                //===========================================
+                Intent it = getIntent();
+                String item = it.getStringExtra("item");
+                String usuario = getFromSharedPreferences("username");
+                //===========================================
 
 
                 final Itens produtoExcluir = itensFiltrados.get(position);
@@ -135,12 +131,12 @@ public class Lista_de_itens extends AppCompatActivity {
 
                 //===========================================
 
-                                daoitenslistaFechada.inserir(l);
-                                itensFiltrados.remove(produtoExcluir);
-                                itens.remove(produtoExcluir);
-                                daoitenslista.excluir(produtoExcluir);
-                                listaViewItens.invalidateViews();
-                                Toast.makeText(Lista_de_itens.this, "Finalizado", Toast.LENGTH_SHORT).show();
+                daoitenslistaFechada.inserir(l);
+                itensFiltrados.remove(produtoExcluir);
+                itens.remove(produtoExcluir);
+                daoitenslista.excluir(produtoExcluir);
+                listaViewItens.invalidateViews();
+                Toast.makeText(Lista_de_itens.this, "Finalizado", Toast.LENGTH_SHORT).show();
 
                 Intent itt = new Intent(Lista_de_itens.this, Lista_de_itens.class);
                 itt.putExtra("item", Item);
@@ -194,7 +190,6 @@ public class Lista_de_itens extends AppCompatActivity {
                 listaViewItensF.invalidateViews();
 
 
-
                 Intent itt = new Intent(Lista_de_itens.this, Lista_de_itens.class);
                 itt.putExtra("item", Item);
                 startActivity(itt);
@@ -206,10 +201,10 @@ public class Lista_de_itens extends AppCompatActivity {
 
 //        Toast.makeText(this, "Registros = "+countGrid, Toast.LENGTH_SHORT).show();
 
-        if(countGrid == 0){
-            String[] itens = { "Adicione um item a sua tabela com o Botão(+)." };
+        if (countGrid == 0) {
+            String[] itens = {"Adicione um item a sua tabela com o Botão(+)."};
 
-            listaViewItens.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, itens));
+            listaViewItens.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itens));
         }
 
     }

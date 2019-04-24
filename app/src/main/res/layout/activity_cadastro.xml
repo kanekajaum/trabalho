@@ -52,5 +52,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/buttons"
         android:onClick="cadastro"
-        android:text="Cadastrar" />
+        android:text="Cadastrar"
+        android:textColor="@android:color/background_light" />
 </LinearLayout>

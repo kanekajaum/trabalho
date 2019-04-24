@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cinza"
     android:orientation="vertical"
     tools:context=".Login">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="404dp"
+        android:layout_height="409dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/cinza"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221">
+        app:layout_constraintVertical_bias="0.405">
 
 
         <TextView
@@ -60,7 +62,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/buttons"
             android:onClick="Login"
-            android:text="Entrar" />
+            android:text="Entrar"
+            android:textColor="@android:color/background_light" />
 
         <TextView
             android:id="@+id/textView6"
@@ -84,7 +87,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/buttons"
             android:onClick="cadas"
-            android:text="Cadastrar-se" />
+            android:text="Cadastrar-se"
+            android:textColor="@android:color/background_light" />
 
     </LinearLayout>
 

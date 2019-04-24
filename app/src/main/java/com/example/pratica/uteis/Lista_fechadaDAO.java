@@ -64,6 +64,25 @@ public class Lista_fechadaDAO {
         return lista;
     }
 
+    public List<Lista_fechada> ObterTodos_2( String email) {
+        List<Lista_fechada> lista = new ArrayList<Lista_fechada>();
+
+        Cursor cursor = banco.rawQuery("SELECT * FROM lista_fechada WHERE email_usuario LIKE '"+email+"' ORDER BY id_itens DESC LIMIT 6 ", null);// LIMIT 6
+
+        while (cursor.moveToNext()){
+            Lista_fechada it = new Lista_fechada();
+
+            it.setId_itens(cursor.getInt(0));
+            it.setNome_item(cursor.getString(1));
+            it.setNome_tabela(cursor.getString(2));
+            it.setEmail_usuario(cursor.getString(3));
+
+            lista.add(it);
+
+        }
+        return lista;
+    }
+
     public void excluir(Lista_fechada produtoExcluir) {
         banco.delete("lista_fechada", "id_itens = ?", new String[]{produtoExcluir.getId_itens().toString()});
     }

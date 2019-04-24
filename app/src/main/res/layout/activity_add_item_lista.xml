@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cinza"
     android:orientation="vertical"
     tools:context=".usuarios.Add_item_lista">
 
@@ -14,6 +15,11 @@
         android:textAlignment="center"
         android:textSize="14sp" />
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
     <EditText
         android:id="@+id/editNome_item_adicionar"
         android:layout_width="match_parent"
@@ -22,11 +28,9 @@
         android:hint="Item"
         android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/button2"
+    <TextView
+        android:id="@+id/textView10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttons"
-        android:onClick="ad_item_add"
-        android:text="Adicionar" />
+        android:layout_height="36dp" />
+
 </LinearLayout>

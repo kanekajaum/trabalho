@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"
-
+        android:background="@color/cinza"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
@@ -19,8 +19,8 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:text="Nome do produto"
+            android:layout_height="211dp"
+            android:text="Adicionar lista"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -34,13 +34,6 @@
             android:inputType="textPersonName" />
 
 
-        <Button
-            android:id="@+id/btn_inserir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/buttons"
-            android:onClick="inserir"
-            android:text="Inserir" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
