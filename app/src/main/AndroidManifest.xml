@@ -32,8 +32,10 @@
         <activity android:name=".listas.Lista_tabela_fechada" />
         <activity android:name=".itens.item" />
         <activity android:name=".listas.Lista_cadatro" />
-        <activity android:name=".Login" />
-        <activity android:name=".Cadastro" />
+        <activity android:name=".Login"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Cadastro"
+            android:screenOrientation="portrait" />
         <activity android:name=".uteis.MainActivity" />
         <activity
             android:name=".listas.ListaP"
