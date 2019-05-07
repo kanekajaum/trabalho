@@ -52,6 +52,11 @@ public class Conexao extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        String imagem = "create table imagem(" +
+                "id_img  integer primary key autoincrement, "+
+                "email_user_img  varchar(50), "+
+                "img  blob )";
 
+        db.execSQL(imagem);
     }
 }

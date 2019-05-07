@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -46,7 +47,7 @@ public class ListaP extends AppCompatActivity
     private List<Produto> produtos;
     private GridView gv;
     private int res;
-
+    private Button b;
     private List<Produto> produtosFiltrados = new ArrayList<>();
 
     private ListView listaView;
@@ -82,6 +83,7 @@ public class ListaP extends AppCompatActivity
         gv = (GridView) findViewById(R.id.listaGrid);
 
         dao = new ProdutoDAO(this);
+        b = (Button) findViewById(R.id.btn);
 
         ItensDAO daoItens = new ItensDAO(this);
 //        String aqui = daoItens.contar("Casa", username);
