@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/mLayout">
 
     <TextView
         android:layout_width="match_parent"
@@ -64,5 +65,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.4" />
+
+        <Button
+            android:id="@+id/btn_paleta"
+            android:layout_width="91dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/common_google_signin_btn_text_dark_default"
+            android:cursorVisible="false"
+            android:onClick="cores"
+            android:text="Cores"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

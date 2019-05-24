@@ -86,9 +86,9 @@ public class Perfil extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imagem = (Bitmap) extras.get("data");
 
+
             imageView.setImageBitmap(imagem);
 
-            System.out.println(imagem);
 
 
 

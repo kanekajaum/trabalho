@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "951377384763",
+    "firebase_url": "https://listadetarefas-bde09.firebaseio.com",
+    "project_id": "listadetarefas-bde09",
+    "storage_bucket": "listadetarefas-bde09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951377384763:android:77775b52d5eaefea",
+        "android_client_info": {
+          "package_name": "com.example.pratica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951377384763-bq2pikv0317ah66u3v640tn4f5isafq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZLmmkgmP-BKDdjphfYEQAD1UGeH459OY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951377384763-bq2pikv0317ah66u3v640tn4f5isafq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

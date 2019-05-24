@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -32,9 +33,10 @@ import com.example.pratica.uteis.Produto;
 import com.example.pratica.R;
 import com.example.pratica.itens.ItemAdapter;
 import com.example.pratica.uteis.ProdutoDAO;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class ListaP extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,6 +51,8 @@ public class ListaP extends AppCompatActivity
 
     private ListView listaView;
     private TextView qtdItens;
+    int mDefaultColor;
+    ConstraintLayout mLayout ;
 
 
     @Override
@@ -261,6 +265,7 @@ public class ListaP extends AppCompatActivity
         dialog.show();
 
 
+
     }
 
 
@@ -366,4 +371,28 @@ public class ListaP extends AppCompatActivity
 
 
 
+    public void cores(View view) {
+//        Toast.makeText(this, "Eu aqui", Toast.LENGTH_SHORT).show();
+
+        openColorPicker();
+
+    }
+    public void openColorPicker(){
+        AmbilWarnaDialog color  = new AmbilWarnaDialog(this, mDefaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+            @Override
+            public void onCancel(AmbilWarnaDialog dialog) {
+
+            }
+
+            @Override
+            public void onOk(AmbilWarnaDialog dialog, int color) {
+                mDefaultColor = color;
+                mLayout.setBackgroundColor(mDefaultColor);
+
+//                video 4:06
+
+            }
+        });
+        color.show();
+    }
 }

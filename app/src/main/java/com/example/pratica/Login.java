@@ -3,6 +3,7 @@ package com.example.pratica;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +12,14 @@ import android.widget.Toast;
 
 import com.example.pratica.listas.ListaP;
 import com.example.pratica.usuarios.Usuario;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleSignatureVerifier;
+import com.google.android.gms.common.api.GoogleApiClient;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-
-    private static Usuario User = null;
     private EditText email;
     private EditText senha;
     private UsuarioDAO dao;
@@ -36,9 +40,10 @@ public class Login extends AppCompatActivity {
 
 
         carregarPreferencias(txt_email);
-
-
+        
     }
+
+
 
 
     public void Login(View view) {
@@ -88,4 +93,8 @@ public class Login extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(this, "Algo deu errado!!!", Toast.LENGTH_SHORT).show();
+    }
 }
