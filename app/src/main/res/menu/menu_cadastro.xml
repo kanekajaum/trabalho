@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:icon="@android:drawable/ic_input_add"
+        android:title="add"
+        app:showAsAction="always"
+        android:onClick="add_dialog"/>
+    <item
         android:id="@+id/app_bar_search"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Consulta"

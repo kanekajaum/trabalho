@@ -34,20 +34,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UnknownId" />
 
-    <TextView
-        android:id="@+id/editTextFinal"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/background_dark"
-        android:fontFamily="sans-serif-medium"
-        android:text="Finalizados"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_light" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <ListView
         android:id="@+id/listaF"
         android:layout_width="wrap_content"

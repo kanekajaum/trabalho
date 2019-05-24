@@ -1,5 +1,4 @@
 package com.example.pratica.listas;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,17 +18,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.pratica.Login;
 import com.example.pratica.uteis.ItensDAO;
-import com.example.pratica.uteis.MainActivity;
 import com.example.pratica.Perfil;
 import com.example.pratica.uteis.Produto;
 import com.example.pratica.R;
@@ -56,6 +53,7 @@ public class ListaP extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String username =  getFromSharedPreferences("username");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_p);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -65,11 +63,53 @@ public class ListaP extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(ListaP.this, MainActivity.class);
-                startActivity(it);
+
+                AlertDialog.Builder  mBuilder  = new AlertDialog.Builder(ListaP.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_add_lista, null);
+                final EditText mEmail = (EditText)mView.findViewById(R.id.txtDialog_list);
+                Button mAdd = (Button) mView.findViewById(R.id.dialg_add_item);
+                Button mVoltar = (Button) mView.findViewById(R.id.dialg_cancelar);
+
+                mAdd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(!mEmail.getText().toString().isEmpty()){
+
+                            String usuario = getFromSharedPreferences("username");
+                            Produto p = new Produto();
+
+                            p.setNome(mEmail.getText().toString());
+                            p.setEmail_usuario_lista(usuario);
+
+                                dao.inserir(p);
+
+                                Intent it = new Intent(ListaP.this, ListaP.class);
+                                startActivity(it);
+
+                                finish();
+
+
+
+                        }else{
+                            Toast.makeText(ListaP.this, "deu ruim!!!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                mVoltar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
+
             }
         });
-        String username =  getFromSharedPreferences("username");
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -135,20 +175,13 @@ public class ListaP extends AppCompatActivity
 
         if(username != "stive"){
             nome = (TextView) findViewById(R.id.navNome);
-        }else{
-            nome.setText("Você precisa se logar");
-
         }
-
 
         int countGrid = gv.getAdapter().getCount(); //contar itens da lista
 
-//        Toast.makeText(this, "Registros = "+countGrid, Toast.LENGTH_SHORT).show();
 
         if(countGrid == 0){
-            String[] itens = { "Bem Vindo "+username+"","Crie uma lista  no botão (+)." };
-
-            gv.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, itens));
+            Toast.makeText(this, "Bem Vindo "+username+"Crie uma lista  no botão (+).", Toast.LENGTH_LONG).show();
         }
 
 
@@ -226,6 +259,8 @@ public class ListaP extends AppCompatActivity
                     }
                 }).create();
         dialog.show();
+
+
     }
 
 
@@ -256,6 +291,8 @@ public class ListaP extends AppCompatActivity
             finish();
         }
     }
+
+
 
 
     @Override
@@ -326,6 +363,7 @@ public class ListaP extends AppCompatActivity
 
 
     }
+
 
 
 }

@@ -76,6 +76,8 @@ public class Perfil extends AppCompatActivity {
     public void trocar_foto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 1);
+
+
     }
 
     @Override
@@ -85,6 +87,12 @@ public class Perfil extends AppCompatActivity {
             Bitmap imagem = (Bitmap) extras.get("data");
 
             imageView.setImageBitmap(imagem);
+
+            System.out.println(imagem);
+
+
+
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

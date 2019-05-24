@@ -14,7 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,7 +25,6 @@ import com.example.pratica.R;
 import com.example.pratica.itens.ItemAdapterRiscadp;
 import com.example.pratica.itens.Itens;
 import com.example.pratica.itens.ItensAdapter;
-import com.example.pratica.usuarios.Add_item_lista;
 import com.example.pratica.uteis.ItensDAO;
 import com.example.pratica.uteis.Lista_fechada;
 import com.example.pratica.uteis.Lista_fechadaDAO;
@@ -49,12 +49,14 @@ public class Lista_de_itens extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_lista_de_itens);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
         img = findViewById(R.id.imageadapter);
-
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,10 +66,70 @@ public class Lista_de_itens extends AppCompatActivity {
 
                 //Recuperei a string da outra activity
                 String item = it.getStringExtra("item");
+            //----------------------------
 
-                Intent item_passado = new Intent(Lista_de_itens.this, Add_item_lista.class);
-                item_passado.putExtra("item", item);
-                startActivity(item_passado);
+                AlertDialog.Builder  mBuilder  = new AlertDialog.Builder(Lista_de_itens.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_add_item, null);
+                final EditText mEmail = (EditText)mView.findViewById(R.id.txtDialog_item);
+                Button mAdd = (Button) mView.findViewById(R.id.dialg_add_item);
+                Button mVoltar = (Button) mView.findViewById(R.id.dialg_cancelar);
+
+                mAdd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(!mEmail.getText().toString().isEmpty()){
+
+                            //Pega a intent de outra activity
+                            Intent item_passado = getIntent();
+
+                            //Recuperei a string da outra activity
+                            String iitem = item_passado.getStringExtra("item");
+
+                            String usuario = getFromSharedPreferences("username");
+
+//        Toast.makeText(this, "Usuario: "+usuario+" || Lista: "+item+" || add: "+textNome_item.getText().toString(), Toast.LENGTH_LONG).show();
+//
+
+                            Itens itens = new Itens();
+
+                            itens.setNome_item(mEmail.getText().toString());
+                            itens.setNome_tabela(iitem);
+                            itens.setEmail_usuario(usuario);
+
+                            ItensDAO daoItens = new ItensDAO(Lista_de_itens.this);
+                            long result = daoItens.inserir(itens);
+
+
+                            Intent it = new Intent(Lista_de_itens.this, Lista_de_itens.class);
+                            it.putExtra("item", iitem);
+                            startActivity(it);
+
+
+                        }else{
+                            Toast.makeText(Lista_de_itens.this, "deu ruim!!!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                mVoltar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Pega a intent de outra activity
+                        Intent item_passado = getIntent();
+
+                        //Recuperei a string da outra activity
+                        String iitem = item_passado.getStringExtra("item");
+
+                        Intent it = new Intent(Lista_de_itens.this, Lista_de_itens.class);
+                        it.putExtra("item", iitem);
+                        startActivity(it);
+                    }
+                });
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
+            //----------------------------
             }
         });
         String usuario = getFromSharedPreferences("username");
@@ -85,8 +147,6 @@ public class Lista_de_itens extends AppCompatActivity {
         text = findViewById(R.id.editTextTitle_pag);
         text.setText(Item);
 
-        text = findViewById(R.id.editTextFinal);
-        text.setText(Item + "s finalizado");
 
 
         listaViewItens = findViewById(R.id.list_itens);
@@ -202,9 +262,7 @@ public class Lista_de_itens extends AppCompatActivity {
 //        Toast.makeText(this, "Registros = "+countGrid, Toast.LENGTH_SHORT).show();
 
         if (countGrid == 0) {
-            String[] itens = {"Adicione um item a sua tabela com o Botão(+)."};
-
-            listaViewItens.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itens));
+            Toast.makeText(this, "Agora crie uma lista no botão (+).", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -318,9 +376,13 @@ public class Lista_de_itens extends AppCompatActivity {
         //Recuperei a string da outra activity
         String item = it.getStringExtra("item");
 
-        Intent item_passado = new Intent(this, Add_item_lista.class);
-        item_passado.putExtra("item", item);
-        startActivity(item_passado);
+//        Intent item_passado = new Intent(this, Add_item_lista.class);
+//        item_passado.putExtra("item", item);
+//        startActivity(item_passado);
+
+
+
+
     }
 
     @Override
