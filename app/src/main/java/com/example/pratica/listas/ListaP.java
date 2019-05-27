@@ -55,6 +55,7 @@ public class ListaP extends AppCompatActivity
     private TextView qtdItens;
     int mDefaultColor;
     GridView mLayout ;
+    ListView lLayout;
     Button mButton;
 
 
@@ -113,7 +114,6 @@ public class ListaP extends AppCompatActivity
                 mBuilder.setView(mView);
                 AlertDialog dialog = mBuilder.create();
                 dialog.show();
-
 
             }
         });
@@ -189,13 +189,14 @@ public class ListaP extends AppCompatActivity
 
 
         if(countGrid == 0){
-            Toast.makeText(this, "Bem Vindo "+username+"Crie uma lista  no botão (+).", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bem Vindo "+username+", Crie uma lista  no botão (+).", Toast.LENGTH_LONG).show();
         }
 
         SharedPreferences sp = getSharedPreferences("thema", ListaP.MODE_PRIVATE);
         int myIntValue = sp.getInt("thema_color", -1645597);
 //
         mLayout = (GridView)findViewById(R.id.listaGrid);
+
 
         int cor = myIntValue;
 
