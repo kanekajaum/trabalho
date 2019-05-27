@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/lista"
+        android:icon="@mipmap/ic_lista"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -17,7 +17,7 @@
             android:name=".listas.Lista_de_itens"
             android:label="@string/title_activity_lista_de_itens1"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity android:name=".listas.Lista_itens_finalizados" />
         <activity android:name=".listas.listaGrid" />
         <activity
