@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -52,7 +54,9 @@ public class ListaP extends AppCompatActivity
     private ListView listaView;
     private TextView qtdItens;
     int mDefaultColor;
-    ConstraintLayout mLayout ;
+    GridView mLayout ;
+    Button mButton;
+
 
 
     @Override
@@ -187,6 +191,18 @@ public class ListaP extends AppCompatActivity
         if(countGrid == 0){
             Toast.makeText(this, "Bem Vindo "+username+"Crie uma lista  no botão (+).", Toast.LENGTH_LONG).show();
         }
+
+        SharedPreferences sp = getSharedPreferences("thema", ListaP.MODE_PRIVATE);
+        int myIntValue = sp.getInt("thema_color", -1645597);
+//
+        mLayout = (GridView)findViewById(R.id.listaGrid);
+
+        int cor = myIntValue;
+
+        mDefaultColor = cor;
+
+        mLayout.setBackgroundColor(mDefaultColor);
+
 
 
     }
@@ -378,6 +394,8 @@ public class ListaP extends AppCompatActivity
 
     }
     public void openColorPicker(){
+
+
         AmbilWarnaDialog color  = new AmbilWarnaDialog(this, mDefaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
             @Override
             public void onCancel(AmbilWarnaDialog dialog) {
@@ -389,10 +407,23 @@ public class ListaP extends AppCompatActivity
                 mDefaultColor = color;
                 mLayout.setBackgroundColor(mDefaultColor);
 
-//                video 4:06
+                System.out.println("Cor: "+color);
 
+                SharedPreferences sp = getSharedPreferences("thema", ListaP.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putInt("thema_color", color);
+                editor.commit();
             }
         });
         color.show();
+
+
+
+
     }
+
+    public void thema(MenuItem item) {
+        openColorPicker();
+    }
+
 }

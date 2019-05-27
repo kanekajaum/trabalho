@@ -7,14 +7,16 @@
     android:layout_marginLeft="4dp"
     android:layout_marginEnd="4dp"
     android:orientation="vertical"
-    tools:context=".itens.item">
+    tools:context=".itens.item"
+    android:id="@+id/card">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="10dp"
         android:background="@drawable/borda"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:id="@+id/L_item">
 
         <TextView
             android:id="@+id/textNome_item"
